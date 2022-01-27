@@ -1,0 +1,15 @@
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/bin/Debug/netcoreapp3.1/mastermind.deps.json
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/bin/Debug/netcoreapp3.1/mastermind.runtimeconfig.json
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/bin/Debug/netcoreapp3.1/mastermind.runtimeconfig.dev.json
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/bin/Debug/netcoreapp3.1/mastermind.dll
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/bin/Debug/netcoreapp3.1/mastermind.pdb
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/bin/Debug/netcoreapp3.1/Castle.Core.dll
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/bin/Debug/netcoreapp3.1/Moq.dll
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/obj/Debug/netcoreapp3.1/mastermind.csprojAssemblyReference.cache
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/obj/Debug/netcoreapp3.1/mastermind.AssemblyInfoInputs.cache
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/obj/Debug/netcoreapp3.1/mastermind.AssemblyInfo.cs
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/obj/Debug/netcoreapp3.1/mastermind.csproj.CoreCompileInputs.cache
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/obj/Debug/netcoreapp3.1/mastermind.csproj.CopyComplete
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/obj/Debug/netcoreapp3.1/mastermind.dll
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/obj/Debug/netcoreapp3.1/mastermind.pdb
+/Users/josephine.chong/Documents/FMA/mastermind/mastermind/obj/Debug/netcoreapp3.1/mastermind.genruntimeconfig.cache

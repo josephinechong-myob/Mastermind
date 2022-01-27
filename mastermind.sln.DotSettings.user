@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=50868ced_002D2f16_002D4652_002Daf2a_002D3c4e2ad7ccf8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Mastermind_Should_Produce_Four_Colours" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.GameTest.Mastermind_Should_Produce_Four_Colours&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e9f21523_002Dba70_002D4dba_002D8a22_002D0de2c78bc573/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Mastermind_Should_Produce_Four_Colours #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.GameTest.Mastermind_Should_Produce_Four_Colours&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
