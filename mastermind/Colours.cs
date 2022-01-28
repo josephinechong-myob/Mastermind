@@ -5,11 +5,16 @@ namespace mastermind
 {
     public class Colours
     {
-        public List<Colour> ColoursList;
+        private List<Colour> _coloursList;
 
         public Colours(List<Colour> coloursList)
         {
-            ColoursList = coloursList;
+            _coloursList = coloursList;
+        }
+
+        public List<Colour> Get()
+        {
+            return _coloursList;
         }
         
         public static Colours GenerateNew(int numberOfColours = 4)

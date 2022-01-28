@@ -13,7 +13,7 @@ namespace mastermindTest
 
             //Act
             var colours = Colours.GenerateNew();
-            var actualMastermindColourListCount = colours.ColoursList.Count;
+            var actualMastermindColourListCount = colours.Get().Count;
             
             //Assert
             Assert.Equal(expectedMastermindColourListCount, actualMastermindColourListCount);

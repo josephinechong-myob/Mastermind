@@ -34,7 +34,7 @@ namespace mastermind
             //if successful reset game
         }
 
-        private void Mastermind() //L27-L35 goes into Colours class
+        private void Mastermind()
         {
             Colours.GenerateNew();
             
