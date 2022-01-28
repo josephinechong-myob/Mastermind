@@ -5,34 +5,40 @@ namespace mastermind
 {
     public class Game
     {
-        // randomisation of colors (4) - testing
         private readonly IConsole _console;
         private int _gameCount;
-        public List<Colour> MastermindColorsList;
+        private Colours _colours;
+        
+        //public colours MastermindsColours
+        //public mastermind master - replace line 11
         public Game(IConsole console)
         {
             _console = console;
             _gameCount = 0;
-            MastermindColorsList = new List<Colour>();
+            _colours = new Colours(new List<Colour>());//to do refactor for updated list
+
         }
 
         public void Run()
         {
+            //Get computer == mastermind 4 colors
             Mastermind();
+            
+            //Get player guess
+            var player = new Player(_console);
+           // Player.GetPlayersColourGuess();
+            
+            //validate player input
+            //Check players guess
+            //return hint array
+            //if successful reset game
         }
 
-        private void Mastermind()
+        private void Mastermind() //L27-L35 goes into Colours class
         {
-            var colours = ColourExtensions.GetColour();
-            Random rnd = new Random();
+            Colours.GenerateNew();
             
-            for (var i = 0; i < 4; i++)
-            {
-                var randomNumber = rnd.Next(colours.Length);
-                var randomColour = colours[randomNumber];
-                MastermindColorsList.Add(randomColour);
-            }
-
+            //MastermindsColours = new Colours();
         }
     }
 }
