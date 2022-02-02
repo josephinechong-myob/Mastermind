@@ -1,30 +1,23 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace mastermind
 {
     public class Player
     {
-        private readonly IConsole _console;
-        public List<Colour> PlayersColoursGuess;
+        public List<List<Colour>> PlayersColoursGuesses;
         
-        public Player(IConsole console)
+        public Player()
         {
-            _console = console;
-            PlayersColoursGuess = new List<Colour>();
+            PlayersColoursGuesses = new List<List<Colour>>();
         }
-
-        /*public static void GetPlayersColourGuess()
-        {
-            _console.WriteLine("What is your name?");
-            var name = _console.ReadLine();
-            _console.WriteLine($"{name} the colours available are red, blue, green, orange, purple and yellow. Please enter your guess of four colours (i.e. RED, RED, GREEN, BLUE)");
-            var playersColoursString = _console.ReadLine();
-            string[] playerInputSplitted = playersColoursString.Split(',');
-            for (var i = 0; i < playerInputSplitted.Length; i++)
-            {
-                //convert string to colour enum
-                PlayersColoursGuess.Add(playerInputSplitted[i]);
-            }
-        }*/
+        
+        //test for getplayercolourguess that you will recieve a list of colours TDD
+        
+        //1-60 guesses {4 colour} list, list of list 
+        //list of guess class list of colours into guess class - count/guess ID/no and a list of the colours guessed
+        
     }
 }

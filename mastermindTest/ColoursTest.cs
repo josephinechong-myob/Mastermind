@@ -1,4 +1,5 @@
 using mastermind;
+using mastermind.RandomNumberGenerator;
 using Xunit;
 
 namespace mastermindTest
@@ -12,7 +13,9 @@ namespace mastermindTest
             var expectedMastermindColourListCount = 4;
 
             //Act
-            var colours = Colours.GenerateNew();
+            var randomNumberGenerator = new RandomNumberGenerator();
+            var coloursGenerator = new ColoursGenerator(randomNumberGenerator);
+            var colours = coloursGenerator.GenerateNew(); //
             var actualMastermindColourListCount = colours.Get().Count;
             
             //Assert

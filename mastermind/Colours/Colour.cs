@@ -12,7 +12,7 @@ namespace mastermind
 
     public static class ColourExtensions
     {
-        public static Colour[] GetColour()
+        public static Colour[] GetColour() //to-do 
         {
             return new Colour[]
             {

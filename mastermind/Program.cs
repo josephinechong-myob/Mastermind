@@ -6,8 +6,9 @@ namespace mastermind
     {
         static void Main(string[] args)
         {
+            var randomNumberGenerator = new RandomNumberGenerator.RandomNumberGenerator();
             var console = new GameConsole();
-            var game = new Game(console);
+            var game = new Game(console, randomNumberGenerator);
             game.Run();
         }
     }
