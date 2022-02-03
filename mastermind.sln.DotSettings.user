@@ -9,6 +9,8 @@
     &lt;ProjectFile&gt;FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0/f:ColoursTest.cs&lt;/ProjectFile&gt;
     &lt;TestAncestor&gt;
       &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.ValidatorTest.Guesses_Should_Only_Contain_Four_Valid_Colors&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.ValidatorTest.All_Colours_Are_Capitalised&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.ValidatorTest.Colours_Are_Valid&lt;/TestId&gt;
     &lt;/TestAncestor&gt;
   &lt;/Or&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

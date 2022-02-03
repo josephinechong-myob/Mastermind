@@ -30,7 +30,6 @@ namespace mastermind
             var player = new Player();
             _gameDialogue.GetPlayersColourGuess();
             
-            //validate player input
             //Check players guess - 
             //return hint array
             //if successful reset game
