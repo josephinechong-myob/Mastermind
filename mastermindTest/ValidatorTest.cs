@@ -1,4 +1,5 @@
 using mastermind;
+using Moq;
 using Xunit;
 
 namespace mastermindTest

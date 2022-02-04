@@ -2,12 +2,12 @@ namespace mastermind
 {
     public enum Colour
     {
-        RED,
-        BLUE,
-        GREEN,
-        ORANGE,
-        PURPLE,
-        YELLOW
+        Red,
+        Blue,
+        Green,
+        Orange,
+        Purple,
+        Yellow
     }
 
     public static class ColourExtensions
@@ -16,12 +16,12 @@ namespace mastermind
         {
             return new Colour[]
             {
-                Colour.RED,
-                Colour.BLUE,
-                Colour.GREEN,
-                Colour.ORANGE,
-                Colour.PURPLE,
-                Colour.YELLOW
+                Colour.Red,
+                Colour.Blue,
+                Colour.Green,
+                Colour.Orange,
+                Colour.Purple,
+                Colour.Yellow
             };
         }
     }

@@ -17,43 +17,54 @@ namespace mastermind
         
         public List<Colour> GetPlayersColourGuess()
         {
+            var playerInput = GetPlayerColourInput();
+
+            CheckColourListLength(playerInput);
+            CheckValidColour(playerInput);
             
-            Player_Instructions();
-            var stringResponse = _console.ReadLine().ToUpper();
-            var colourStringList = stringResponse.Split((',')).ToList();
+            return ConvertStringToEnumForColourGuesses(playerInput);
+        }
 
-            while (colourStringList.Count != 4)
-            {
-                _console.WriteLine(Constants.Error_Message_Invalid_Guess_Length);
-                Player_Instructions();
-                stringResponse = _console.ReadLine().ToUpper();
-                colourStringList = stringResponse.Split((',')).ToList();
-            }
-
-            foreach (var colour in colourStringList)
-            {
-                while (!_validator.IsValidColour(colour))
-                {
-                    _console.WriteLine(Constants.Error_Message_Invalid_Colour);
-                    Player_Instructions();
-                    stringResponse = _console.ReadLine().ToUpper();
-                    colourStringList = stringResponse.Split((',')).ToList();
-                }
-            }
-            
-            var colourEnumList = new List<Colour>();
-
-            foreach (var colour in colourStringList)
-            {
-                colourEnumList.Add((Colour)Enum.Parse(typeof(Colour), colour));
-            }
+        private List<Colour> ConvertStringToEnumForColourGuesses(string playerInput)
+        {
+            var colourEnumList = playerInput
+                .Split(',').Select(colour => (Colour)Enum.Parse(typeof(Colour), colour)).ToList();
             
             return colourEnumList;
         }
-        
-        public void Player_Instructions()
+
+        private void CheckColourListLength(string playerInput)
+        {
+            while (_validator.ThereAreNotFourEntries(playerInput))
+            {
+                PrintErrorMessage(Constants.ErrorMessageInvalidGuessLength);
+                playerInput = GetPlayerColourInput();
+            }
+        }
+
+        private void CheckValidColour(string playerInput)
+        {
+            while (_validator.AnyColourIsInvalidInInput(playerInput))
+            {
+                PrintErrorMessage(Constants.ErrorMessageInvalidColour);
+                playerInput = GetPlayerColourInput();
+            }
+        }
+
+        private string GetPlayerColourInput()
+        {
+            Print_Player_Instructions();
+            return _console.ReadLine().ToUpper();
+        }
+
+        private void Print_Player_Instructions()
         {
             _console.WriteLine("Please enter your guess of four colours for mastermind separated by comma (i.e. Red, Orange, Yellow, Orange)");
+        }
+
+        private void PrintErrorMessage(string errorMessage)
+        {
+           _console.WriteLine(errorMessage); 
         }
         
         public string PrintHintArray()
