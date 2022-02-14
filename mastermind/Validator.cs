@@ -33,7 +33,7 @@ namespace mastermind
 
         public bool ThereAreNotFourEntries(string playerInput)
         {
-            return playerInput.Count(character => character == ',') != 4;
+            return playerInput.Count(character => character == ',') != 3;
         }
 
         public bool AnyColourIsInvalidInInput(string playerInput)

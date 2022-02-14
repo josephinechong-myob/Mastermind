@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,46 +16,55 @@ namespace mastermind
             _validator = new Validator();
         }
         
-        public List<Colour> GetPlayersColourGuess()
+        public List<Colour> GetPlayersColourGuess() //return 4 colour enums
         {
             var playerInput = GetPlayerColourInput();
 
-            CheckColourListLength(playerInput);
-            CheckValidColour(playerInput);
+            playerInput = CheckColourListLength(playerInput);
+            playerInput = CheckValidColour(playerInput);
             
             return ConvertStringToEnumForColourGuesses(playerInput);
         }
 
-        private List<Colour> ConvertStringToEnumForColourGuesses(string playerInput)
+        private string ConvertToTitleCase(string colour) //"RED" " RED" "RED " if first or last character is == " "
         {
-            var colourEnumList = playerInput
-                .Split(',').Select(colour => (Colour)Enum.Parse(typeof(Colour), colour)).ToList();
-            
+            colour = colour.Replace(" ", "");
+            return colour[0] + colour.Substring(1).ToLower();
+        }
+
+        private List<Colour> ConvertStringToEnumForColourGuesses(string playerInput) 
+        {
+            var colourEnumList = playerInput//make everything except the first letter lower case "RED, RED, BLUE, GREEN" 
+                .Split(',').Select(colour => (Colour)Enum.Parse(typeof(Colour), ConvertToTitleCase(colour))).ToList(); 
             return colourEnumList;
         }
 
-        private void CheckColourListLength(string playerInput)
+        private string CheckColourListLength(string playerInput)
         {
             while (_validator.ThereAreNotFourEntries(playerInput))
             {
                 PrintErrorMessage(Constants.ErrorMessageInvalidGuessLength);
                 playerInput = GetPlayerColourInput();
             }
+
+            return playerInput;
         }
 
-        private void CheckValidColour(string playerInput)
+        private string CheckValidColour(string playerInput)
         {
             while (_validator.AnyColourIsInvalidInInput(playerInput))
             {
                 PrintErrorMessage(Constants.ErrorMessageInvalidColour);
                 playerInput = GetPlayerColourInput();
             }
+
+            return playerInput;
         }
 
         private string GetPlayerColourInput()
         {
             Print_Player_Instructions();
-            return _console.ReadLine().ToUpper();
+            return _console.ReadLine().ToUpper(); //if that toUpper should be here
         }
 
         private void Print_Player_Instructions()

@@ -6,7 +6,7 @@ namespace mastermind
 
         public const string ErrorMessageInvalidGuessLength = "Error: you must pass 4 colours!";
 
-        public const string Error_Message_Exceeding_60_Attempts = "Error: you have had more than 60 tries!";
+        public const string ErrorMessageExceeding60Attempts = "Error: you have had more than 60 tries!";
         
     }
 }
