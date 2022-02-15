@@ -6,7 +6,7 @@
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=986ad296_002Dbd63_002D47c8_002D8a75_002D39406c6e40ab/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Should_Return_String_Of_Four_Colour_Guesses" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.GameDialogueTest.Should_Return_String_Of_Four_Colour_Guesses&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.GameDialogueTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e9f21523_002Dba70_002D4dba_002D8a22_002D0de2c78bc573/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Mastermind_Should_Produce_Four_Colours #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;

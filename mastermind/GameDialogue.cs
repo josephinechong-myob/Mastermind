@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,7 +25,7 @@ namespace mastermind
             return ConvertStringToEnumForColourGuesses(playerInput);
         }
 
-        private string ConvertToTitleCase(string colour) //"RED" " RED" "RED " if first or last character is == " "
+        private string ConvertToTitleCase(string colour)
         {
             colour = colour.Replace(" ", "");
             return colour[0] + colour.Substring(1).ToLower();
@@ -34,7 +33,7 @@ namespace mastermind
 
         private List<Colour> ConvertStringToEnumForColourGuesses(string playerInput) 
         {
-            var colourEnumList = playerInput//make everything except the first letter lower case "RED, RED, BLUE, GREEN" 
+            var colourEnumList = playerInput
                 .Split(',').Select(colour => (Colour)Enum.Parse(typeof(Colour), ConvertToTitleCase(colour))).ToList(); 
             return colourEnumList;
         }
@@ -64,7 +63,7 @@ namespace mastermind
         private string GetPlayerColourInput()
         {
             Print_Player_Instructions();
-            return _console.ReadLine().ToUpper(); //if that toUpper should be here
+            return _console.ReadLine().ToUpper();
         }
 
         private void Print_Player_Instructions()
@@ -79,7 +78,8 @@ namespace mastermind
         
         public string PrintHintArray()
         {
-            //obtain hint array from Mastermind
+            //obtain hint array from Mastermind and print it here
+           // _console.WriteLine("Mastermind_hint_array");
             return " ";
         }
     }
