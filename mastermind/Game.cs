@@ -26,10 +26,10 @@ namespace mastermind
 
         public void Run()
         {
-            //Get player guess
+            //mastermind - computer guess - already generated
             var player = new Player();
-            _gameDialogue.GetPlayersColourGuess();
-            
+            var playersColourGuess = _gameDialogue.GetPlayersColourGuess();
+            _mastermind.CheckPlayerColoursGuess(playersColourGuess);
             //Check players guess - 
             //return hint array
             //if successful reset game
