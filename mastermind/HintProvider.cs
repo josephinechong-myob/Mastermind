@@ -9,13 +9,6 @@ namespace mastermind
         {
             
         }
-        //correct colour wrong position = white 
-        //correct colour + position = black
-        // incorrect = no colour/nothing
-        
-        //COLOUR present?
-        //POSITIONING correct?
-
         public List<Hint> ProvideHints(List<Colour> playerColours, List<Colour> mastermindColours)
         {
             //black hint (4 blacks == winning mastermind)
@@ -23,13 +16,30 @@ namespace mastermind
             var filteredMasterMindColours = new List<Colour>();
             var filteredPlayerColours = new List<Colour>();
 
+            hintList = ProvideBlackHints(mastermindColours, playerColours, filteredMasterMindColours,
+                filteredPlayerColours);
+
+            hintList = ProvideWhiteHints(hintList, filteredMasterMindColours, filteredPlayerColours);
+            
+            //randomise the hints
+            
+            return hintList;
+        }
+        
+        //white hint is find colour match - count black hints
+            
+        /*var numberOfWhiteHints = filteredPlayerColours.Where(playerColour => filteredMasterMindColours.Any(mastermindColour => mastermindColour == playerColour)).ToList().Count;*/
+        //hintList.AddRange(Enumerable.Repeat(Hint.White, numberOfWhiteHints));
+
+        private List<Hint> ProvideBlackHints(List<Colour>mastermindColours, List<Colour>playerColours, List<Colour>filteredMasterMindColours, List<Colour>filteredPlayerColours)
+        {
+            var hintList = new List<Hint>();
+            
             for (int i = 0; i < mastermindColours.Count; i++)
             {
                 if (playerColours[i] == mastermindColours[i])
                 {
                     hintList.Add(Hint.Black);
-                    //mastermindColours.RemoveAt(i);
-                    // playerColours.RemoveAt(i);
                 }
                 else
                 {
@@ -37,35 +47,27 @@ namespace mastermind
                     filteredPlayerColours.Add(playerColours[i]);
                 }
             }
+            return hintList;
+        }
 
-            //white hints - rewrite with fitlered mastermind first - could be order or try an loop - debug in l43 to see step by step how code works
+        private List<Hint> ProvideWhiteHints(List<Hint> hintList, List<Colour>filteredMasterMindColours, List<Colour>filteredPlayerColours)
+        {
+            for (int i = 0; i < filteredMasterMindColours.Count; i++)
+            {
+                var foundColour = false;
+                
+                for (int j = 0; j < filteredPlayerColours.Count && !foundColour; j++)
+                {
+                    if (filteredPlayerColours[j] == filteredMasterMindColours[i])
+                    {
+                        hintList.Add(Hint.White);
+                        filteredPlayerColours.RemoveAt(j);
+                        foundColour = true;
+                    }
+                }
+            }
 
-            var numberOfWhiteHints = filteredPlayerColours.Where(playerColour =>
-                filteredMasterMindColours.Any(mastermindColour => mastermindColour == playerColour)).ToList().Count;
-
-
-            hintList.AddRange(Enumerable.Repeat(Hint.White, numberOfWhiteHints));
-        
-
-
-
-        // r r r g
-        // r b b r
-
-        // r r g
-        // b b r
-
-
-
-        //white hint 
-        //count black hints =
-
-
-
-
-        //no hints = nothing correct
-        //randomise the hints
-        return hintList;
+            return hintList;
         }
     }
 }
