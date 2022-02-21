@@ -2,7 +2,7 @@ namespace mastermind.RandomNumberGenerator
 {
     public interface IRandomNumberGenerator
     {
-        public int Next(int max);
+        public int NextRandom(int max);
 
     }
 }

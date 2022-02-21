@@ -1,5 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=47144d2c_002D2b3e_002D4b4b_002Dab24_002De63711fb3ccc/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Two_White_And_One_Black_Hints_Should_Be_Provided_When_Player_Guesses_One_Correct_Positioned_Colour_And_Two_Correct_Colours_With_Improper_Position" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=47144d2c_002D2b3e_002D4b4b_002Dab24_002De63711fb3ccc/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Two_White_And_One_Black_Hints_Should_Be_Provided_When_Player_Guesses_One_Correct_Positioned_Colour_And_Two_Correct_Colours_With_Improper_Position" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.HintsTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
@@ -9,7 +9,7 @@
     &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.GameDialogueTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=986ad296_002Dbd63_002D47c8_002D8a75_002D39406c6e40ab/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Should_Return_String_Of_Four_Colour_Guesses" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=986ad296_002Dbd63_002D47c8_002D8a75_002D39406c6e40ab/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Should_Return_String_Of_Four_Colour_Guesses" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.GameDialogueTest&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.HintsTest.Hints_Should_Be_Provided_When_Player_Guess_Is_Incorrect&lt;/TestId&gt;

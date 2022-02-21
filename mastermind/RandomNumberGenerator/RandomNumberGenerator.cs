@@ -3,7 +3,7 @@ namespace mastermind.RandomNumberGenerator
 {
     public class RandomNumberGenerator : IRandomNumberGenerator
     {
-        public int Next(int max)
+        public int NextRandom(int max)
         {
             Random rnd = new Random();
             return rnd.Next(max);

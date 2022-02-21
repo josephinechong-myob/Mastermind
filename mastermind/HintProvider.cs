@@ -1,13 +1,16 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using mastermind.RandomNumberGenerator;
 
 namespace mastermind
 {
     public class HintProvider
     {
-        public HintProvider()
+        private IRandomNumberGenerator _generator;
+        public HintProvider(IRandomNumberGenerator generator)
         {
-            
+            _generator = generator;
         }
         public List<Hint> ProvideHints(List<Colour> playerColours, List<Colour> mastermindColours)
         {
@@ -20,16 +23,27 @@ namespace mastermind
                 filteredPlayerColours);
 
             hintList = ProvideWhiteHints(hintList, filteredMasterMindColours, filteredPlayerColours);
+
+            //var randomisedHintList = hintList.OrderBy(item => _generator.NextRandom(hintList.Count)).ToList();
+            var randomHintIterator = new RandomHintIterator(hintList, _generator);
             
-            //randomise the hints
+            var randomHints = new List<Hint>();
             
-            return hintList;
+            while (randomHintIterator.HasNext())
+            {
+                var hint = randomHintIterator.GetNext();
+                randomHints.Add(hint);
+            }
+            
+            return randomHints;
         }
         
         //white hint is find colour match - count black hints
             
         /*var numberOfWhiteHints = filteredPlayerColours.Where(playerColour => filteredMasterMindColours.Any(mastermindColour => mastermindColour == playerColour)).ToList().Count;*/
         //hintList.AddRange(Enumerable.Repeat(Hint.White, numberOfWhiteHints));
+
+        
 
         private List<Hint> ProvideBlackHints(List<Colour>mastermindColours, List<Colour>playerColours, List<Colour>filteredMasterMindColours, List<Colour>filteredPlayerColours)
         {
