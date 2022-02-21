@@ -1,32 +1,36 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using mastermind.RandomNumberGenerator;
 
 namespace mastermind
 {
     public class HintProvider
     {
-        private IRandomNumberGenerator _generator;
+        private readonly IRandomNumberGenerator _generator;
         public HintProvider(IRandomNumberGenerator generator)
         {
             _generator = generator;
         }
         public List<Hint> ProvideHints(List<Colour> playerColours, List<Colour> mastermindColours)
         {
-            //black hint (4 blacks == winning mastermind)
-            var hintList = new List<Hint>();
             var filteredMasterMindColours = new List<Colour>();
             var filteredPlayerColours = new List<Colour>();
 
-            hintList = ProvideBlackHints(mastermindColours, playerColours, filteredMasterMindColours,
-                filteredPlayerColours);
-
+            var hintList = ProvideBlackHints(mastermindColours, playerColours, filteredMasterMindColours, filteredPlayerColours);
             hintList = ProvideWhiteHints(hintList, filteredMasterMindColours, filteredPlayerColours);
-
-            //var randomisedHintList = hintList.OrderBy(item => _generator.NextRandom(hintList.Count)).ToList();
-            var randomHintIterator = new RandomHintIterator(hintList, _generator);
             
+            return ProvideRandomHints(hintList);
+        }
+        
+        //var randomisedHintList = hintList.OrderBy(item => _generator.NextRandom(hintList.Count)).ToList();
+        
+        //white hint is find colour match - count black hints
+            
+        /*var numberOfWhiteHints = filteredPlayerColours.Where(playerColour => filteredMasterMindColours.Any(mastermindColour => mastermindColour == playerColour)).ToList().Count;*/
+        //hintList.AddRange(Enumerable.Repeat(Hint.White, numberOfWhiteHints));
+
+        private List<Hint> ProvideRandomHints(List<Hint> hintList)
+        {
+            var randomHintIterator = new RandomHintIterator(hintList, _generator);
             var randomHints = new List<Hint>();
             
             while (randomHintIterator.HasNext())
@@ -38,13 +42,6 @@ namespace mastermind
             return randomHints;
         }
         
-        //white hint is find colour match - count black hints
-            
-        /*var numberOfWhiteHints = filteredPlayerColours.Where(playerColour => filteredMasterMindColours.Any(mastermindColour => mastermindColour == playerColour)).ToList().Count;*/
-        //hintList.AddRange(Enumerable.Repeat(Hint.White, numberOfWhiteHints));
-
-        
-
         private List<Hint> ProvideBlackHints(List<Colour>mastermindColours, List<Colour>playerColours, List<Colour>filteredMasterMindColours, List<Colour>filteredPlayerColours)
         {
             var hintList = new List<Hint>();
