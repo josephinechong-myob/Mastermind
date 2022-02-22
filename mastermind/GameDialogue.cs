@@ -6,8 +6,8 @@ namespace mastermind
 {
     public class GameDialogue
     {
-        private IConsole _console;
-        private Validator _validator;
+        private readonly IConsole _console;
+        private readonly Validator _validator;
 
         public GameDialogue(IConsole console)
         {
@@ -62,11 +62,11 @@ namespace mastermind
 
         private string GetPlayerColourInput()
         {
-            Print_Player_Instructions();
+            PrintPlayerInstructions();
             return _console.ReadLine().ToUpper();
         }
 
-        private void Print_Player_Instructions()
+        private void PrintPlayerInstructions()
         {
             _console.WriteLine("Please enter your guess of four colours for mastermind separated by comma (i.e. Red, Orange, Yellow, Orange)");
         }
@@ -76,25 +76,21 @@ namespace mastermind
            _console.WriteLine(errorMessage); 
         }
         
-        public string GetHints(List<Hint> hints)
+        private string GetHints(List<Hint> hints)
         {
             var hintText = "";
             
             for (int i = 0; i < hints.Count; i++)
             {
-                hintText += hints[i].ToString();
-                
-                if (i < hints.Count - 1)
-                {
-                    hintText += ", ";
-                }
+                hintText += hints[i] + (i < hints.Count - 1 ? ", ": "");
             }
             
             return hintText;
         }
 
-        public void PrintHints(string hintText)
+        public void PrintHints(List<Hint> hints)
         {
+            var hintText = GetHints(hints);
             _console.WriteLine($"{hintText}");
         }
     }

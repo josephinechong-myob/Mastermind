@@ -17,12 +17,10 @@ namespace mastermindTest
             var gameDialogue = new GameDialogue(mockConsole.Object);
 
             //act
-            var actualHintText = gameDialogue.GetHints(hints);
-            gameDialogue.PrintHints(actualHintText);
+            gameDialogue.PrintHints(hints);
 
             //assert
-            Assert.Equal(expectedHintText, actualHintText);
-            mockConsole.Verify(expression => expression.WriteLine("Black, White"),Times.Once);
+            mockConsole.Verify(expression => expression.WriteLine(expectedHintText),Times.Once);
         }
         
         [Fact]

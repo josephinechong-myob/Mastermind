@@ -142,6 +142,7 @@ namespace mastermindTest
             mockRandomiser.SetupSequence(index => index.NextRandom(It.IsAny<int>()))
                 .Returns(0)
                 .Returns(0)
+                .Returns(0)
                 .Returns(0);
             var hintsProvider = new HintProvider(mockRandomiser.Object);
             var expectedHints = new List<Hint> {Hint.White, Hint.White, Hint.White, Hint.White};
@@ -286,6 +287,12 @@ namespace mastermindTest
             new object[] {new List<Colour> {Colour.Blue, Colour.Green, Colour.Yellow, Colour.Purple}, new List<Colour> {Colour.Green, Colour.Yellow, Colour.Purple, Colour.Blue}},
             new object[] {new List<Colour> {Colour.Green, Colour.Orange, Colour.Purple, Colour.Purple}, new List<Colour> {Colour.Purple, Colour.Purple, Colour.Orange, Colour.Green}},
             new object[] {new List<Colour> {Colour.Blue, Colour.Orange, Colour.Green, Colour.Yellow}, new List<Colour> {Colour.Green, Colour.Blue, Colour.Yellow, Colour.Orange}},
+            new object[] {new List<Colour> {Colour.Green, Colour.Red, Colour.Orange, Colour.Green}, new List<Colour> {Colour.Red, Colour.Green, Colour.Green, Colour.Orange}},
+            new object[] {new List<Colour> {Colour.Blue, Colour.Blue, Colour.Yellow, Colour.Purple}, new List<Colour> {Colour.Purple, Colour.Yellow, Colour.Blue, Colour.Blue}},
+            new object[] {new List<Colour> {Colour.Green, Colour.Orange, Colour.Yellow, Colour.Purple}, new List<Colour> {Colour.Purple, Colour.Yellow, Colour.Orange, Colour.Green}},
+            new object[] {new List<Colour> {Colour.Red, Colour.Red, Colour.Orange, Colour.Yellow}, new List<Colour> {Colour.Yellow, Colour.Orange, Colour.Red, Colour.Red}},
+            new object[] {new List<Colour> {Colour.Green, Colour.Orange, Colour.Orange, Colour.Purple}, new List<Colour> {Colour.Orange, Colour.Purple, Colour.Green, Colour.Orange}},
+            new object[] {new List<Colour> {Colour.Red, Colour.Purple, Colour.Red, Colour.Yellow}, new List<Colour> {Colour.Yellow, Colour.Red, Colour.Purple, Colour.Red}}
         };
         
         public static IEnumerable<object[]> OneBlackOneWhiteHintData => new List<object[]>

@@ -26,20 +26,29 @@ namespace mastermind
 
         public void Run()
         {
-            //mastermind - computer guess - already generated
-            var player = new Player();
-            var playersColourGuess = _gameDialogue.GetPlayersColourGuess();
-            _mastermind.CheckPlayerColoursGuess(playersColourGuess);
-            //Check players guess - 
-            //return hint array
-            //Print out hint array 
+            
+            var hints = new List<Hint>();
+            for (int count = 0; count < 60 && !PlayerHasWon(hints); count++)
+            {
+                var player = new Player();
+            
+                var playersColourGuess = 
+                    _gameDialogue.GetPlayersColourGuess();
+            
+                hints = _mastermind.CheckPlayerColoursGuess(playersColourGuess);
+            
+                _gameDialogue.PrintHints(hints);
+            }
+            
+            
             //if successful reset game
+            
+            //game evaluator class?
         }
 
-        public void CheckPlayersGuesses()
+        private bool PlayerHasWon(List<Hint> hints)
         {
-            
+            return hints.TrueForAll(hint => hint == Hint.Black);
         }
-        
     }
 }
