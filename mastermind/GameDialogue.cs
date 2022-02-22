@@ -76,11 +76,26 @@ namespace mastermind
            _console.WriteLine(errorMessage); 
         }
         
-        public string PrintHintArray()
+        public string GetHints(List<Hint> hints)
         {
-            //obtain hint array from Mastermind and print it here
-           // _console.WriteLine("Mastermind_hint_array");
-            return " ";
+            var hintText = "";
+            
+            for (int i = 0; i < hints.Count; i++)
+            {
+                hintText += hints[i].ToString();
+                
+                if (i < hints.Count - 1)
+                {
+                    hintText += ", ";
+                }
+            }
+            
+            return hintText;
+        }
+
+        public void PrintHints(string hintText)
+        {
+            _console.WriteLine($"{hintText}");
         }
     }
 }

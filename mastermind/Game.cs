@@ -32,6 +32,7 @@ namespace mastermind
             _mastermind.CheckPlayerColoursGuess(playersColourGuess);
             //Check players guess - 
             //return hint array
+            //Print out hint array 
             //if successful reset game
         }
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using mastermind;
 using Moq;
 using Xunit;
@@ -6,6 +7,24 @@ namespace mastermindTest
 {
     public class GameDialogueTest
     {
+        [Fact]
+        private void Should_Print_Hint_List_To_Console()
+        {
+            //arrange
+            var hints = new List<Hint> {Hint.Black, Hint.White};
+            var expectedHintText = "Black, White";
+            var mockConsole = new Mock<IConsole>();
+            var gameDialogue = new GameDialogue(mockConsole.Object);
+
+            //act
+            var actualHintText = gameDialogue.GetHints(hints);
+            gameDialogue.PrintHints(actualHintText);
+
+            //assert
+            Assert.Equal(expectedHintText, actualHintText);
+            mockConsole.Verify(expression => expression.WriteLine("Black, White"),Times.Once);
+        }
+        
         [Fact]
         private void Should_Return_String_Of_Four_Colour_Guesses() //happy path
         {

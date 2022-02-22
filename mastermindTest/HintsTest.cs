@@ -134,6 +134,25 @@ namespace mastermindTest
             Assert.Equal(expectedHints, actualHints);
         }
         
+        [Theory, MemberData(nameof(FourWhiteHintsData))] // W W W W
+        private void Four_White_Hints_Should_Be_Provided_When_Player_Guesses_Four_Correct_Colours_With_Improper_Position(List<Colour> mastermindColours, List<Colour> playerColours)
+        {
+            //arrange
+            var mockRandomiser = new Mock<IRandomNumberGenerator>();
+            mockRandomiser.SetupSequence(index => index.NextRandom(It.IsAny<int>()))
+                .Returns(0)
+                .Returns(0)
+                .Returns(0);
+            var hintsProvider = new HintProvider(mockRandomiser.Object);
+            var expectedHints = new List<Hint> {Hint.White, Hint.White, Hint.White, Hint.White};
+
+            //act
+            var actualHints = hintsProvider.ProvideHints(playerColours, mastermindColours);
+
+            //assert
+            Assert.Equal(expectedHints, actualHints);
+        }
+        
         [Theory, MemberData(nameof(OneBlackOneWhiteHintData))] //B W
         private void One_White_And_Black_Hint_Should_Be_Provided_When_Player_Guesses_One_Correct_Positioned_Colour_And_A_Second_Correct_Colour_Improper_Position(List<Colour> mastermindColours, List<Colour> playerColours)
         {
@@ -259,6 +278,14 @@ namespace mastermindTest
             new object[] {new List<Colour> {Colour.Green, Colour.Red, Colour.Green, Colour.Purple}, new List<Colour> {Colour.Red, Colour.Green, Colour.Purple, Colour.Red}},
             new object[] {new List<Colour> {Colour.Orange, Colour.Red, Colour.Green, Colour.Purple}, new List<Colour> {Colour.Red, Colour.Purple, Colour.Purple, Colour.Green}},
             new object[] {new List<Colour> {Colour.Green, Colour.Red, Colour.Yellow, Colour.Orange}, new List<Colour> {Colour.Red, Colour.Yellow, Colour.Blue, Colour.Green}}
+        };
+        
+        public static IEnumerable<object[]> FourWhiteHintsData => new List<object[]>
+        {
+            new object[] {new List<Colour> {Colour.Green, Colour.Red, Colour.Orange, Colour.Blue}, new List<Colour> {Colour.Red, Colour.Green, Colour.Blue, Colour.Orange}},
+            new object[] {new List<Colour> {Colour.Blue, Colour.Green, Colour.Yellow, Colour.Purple}, new List<Colour> {Colour.Green, Colour.Yellow, Colour.Purple, Colour.Blue}},
+            new object[] {new List<Colour> {Colour.Green, Colour.Orange, Colour.Purple, Colour.Purple}, new List<Colour> {Colour.Purple, Colour.Purple, Colour.Orange, Colour.Green}},
+            new object[] {new List<Colour> {Colour.Blue, Colour.Orange, Colour.Green, Colour.Yellow}, new List<Colour> {Colour.Green, Colour.Blue, Colour.Yellow, Colour.Orange}},
         };
         
         public static IEnumerable<object[]> OneBlackOneWhiteHintData => new List<object[]>

@@ -5,4 +5,5 @@ namespace mastermind
         Black,
         White
     }
+    
 }

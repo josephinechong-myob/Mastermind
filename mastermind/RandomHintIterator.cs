@@ -26,7 +26,6 @@ namespace mastermind
             var randomHint = _hints[randomIndex];
             _hints.RemoveAt(randomIndex);
             return randomHint;
-            throw new System.NotImplementedException();
         }
     }
 }
