@@ -26,7 +26,6 @@ namespace mastermind
 
         public void Run()
         {
-            
             var hints = new List<Hint>();
             for (int count = 0; count < 60 && !PlayerHasWon(hints); count++)
             {
@@ -48,7 +47,7 @@ namespace mastermind
 
         private bool PlayerHasWon(List<Hint> hints)
         {
-            return hints.TrueForAll(hint => hint == Hint.Black);
+            return hints.Count == 4  && hints.TrueForAll(hint => hint == Hint.Black);
         }
     }
 }

@@ -10,13 +10,16 @@
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=986ad296_002Dbd63_002D47c8_002D8a75_002D39406c6e40ab/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Should_Return_String_Of_Four_Colour_Guesses" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.GameDialogueTest&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.HintsTest.Hints_Should_Be_Provided_When_Player_Guess_Is_Incorrect&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.HintsTest.One_White_And_Black_Hint_Should_Be_Provided_When_Player_Guesses_One_Correct_Positioned_Colour_And_A_Second_Correct_Colour_Improper_Position&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.HintsTest.Second_One_White_And_Black_Hint_Should_Be_Provided_When_Player_Guesses_One_Correct_Positioned_Colour_And_A_Second_Correct_Colour_Improper_Position&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.HintsTest&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Or&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.GameDialogueTest&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.HintsTest.Hints_Should_Be_Provided_When_Player_Guess_Is_Incorrect&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.HintsTest.One_White_And_Black_Hint_Should_Be_Provided_When_Player_Guesses_One_Correct_Positioned_Colour_And_A_Second_Correct_Colour_Improper_Position&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.HintsTest.Second_One_White_And_Black_Hint_Should_Be_Provided_When_Player_Guesses_One_Correct_Positioned_Colour_And_A_Second_Correct_Colour_Improper_Position&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::FE06963D-6D2B-4ADE-BA48-322ECBE1EDE0::.NETCoreApp,Version=v3.1::mastermindTest.HintsTest&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+    &lt;Project Location="/Users/josephine.chong/Documents/FMA/mastermind/mastermindTest" Presentation="&amp;lt;mastermindTest&amp;gt;" /&gt;
+  &lt;/Or&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e9f21523_002Dba70_002D4dba_002D8a22_002D0de2c78bc573/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Mastermind_Should_Produce_Four_Colours #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Or&gt;

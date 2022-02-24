@@ -13,7 +13,7 @@ namespace mastermind
 
         public bool IsValidColourGuess(string playerResponse)// empty string, non-letters, no comma, check that there are 3 commas (4 colours), are the colour valid colours - regex 
         {
-            //playerResponse = playerResponse.ToUpper(); //use () not [] for alternative colour options
+            playerResponse = playerResponse.ToUpper(); //use () not [] for alternative colour options
             var pattern = "(RED|BLUE|GREEN|ORANGE|PURPLE|YELLOW), (RED|BLUE|GREEN|ORANGE|PURPLE|YELLOW), (RED|BLUE|GREEN|ORANGE|PURPLE|YELLOW), (RED|BLUE|GREEN|ORANGE|PURPLE|YELLOW)";
             var validPattern = new Regex(pattern);
             var stringIsNotEmpty = playerResponse != String.Empty;

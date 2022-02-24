@@ -161,6 +161,36 @@ namespace mastermindTest
             Assert.Equal(typeof(Colour), actualColours[0].GetType()); //checks it is a colour but not as good as checking it is the colour we expect
         }
 
+        [Fact]
+        private void Should_Print_Hints_When_There_Are_Hints()
+        {
+            //arrange
+            var mockConsole = new Mock<IConsole>();
+            var gameDialogue = new GameDialogue(mockConsole.Object);
+            var hints = new List<Hint> {Hint.Black, Hint.White};
+            
+            //act
+            gameDialogue.PrintHints(hints);
+
+            //assert
+            mockConsole.Verify(expression => expression.WriteLine("Hints: Black, White"),Times.Once);
+        }
+        
+        [Fact]
+        private void Should_Print_No_Hints_Available_When_There_Are_No_Hints()
+        {
+            //arrange
+            var mockConsole = new Mock<IConsole>();
+            var gameDialogue = new GameDialogue(mockConsole.Object);
+            var hints = new List<Hint> {};
+            
+            //act
+            gameDialogue.PrintHints(hints);
+
+            //assert
+            mockConsole.Verify(expression => expression.WriteLine("Your guess resulted in no hints"),Times.Once);  
+        }
+
 
     }
 }

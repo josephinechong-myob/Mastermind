@@ -90,8 +90,15 @@ namespace mastermind
 
         public void PrintHints(List<Hint> hints)
         {
-            var hintText = GetHints(hints);
-            _console.WriteLine($"{hintText}");
+            if (hints.Count != 0)
+            {
+                var hintText = GetHints(hints);
+                _console.WriteLine($"Hints: {hintText}"); 
+            }
+            else
+            {
+                _console.WriteLine("Your guess resulted in no hints");
+            }
         }
     }
 }
