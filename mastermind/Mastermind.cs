@@ -5,21 +5,26 @@ namespace mastermind
 {
     public class Mastermind
     {
-        public Colours Colours { get; private set; }
+        private readonly Colours _colours;
         private readonly IRandomNumberGenerator _generator;
 
         public Mastermind(IRandomNumberGenerator randomNumberGenerator)
         {
             var coloursGenerator = new ColoursGenerator(randomNumberGenerator);
             _generator = randomNumberGenerator;
-            Colours = coloursGenerator.GenerateNew();
+            _colours = coloursGenerator.GenerateNew();
         }
         
         public List<Hint> CheckPlayerColoursGuess(List<Colour> playersColours)
         {
             var hintProvider = new HintProvider(_generator);
-            var hints = hintProvider.ProvideHints(playersColours, Colours.Get());
+            var hints = hintProvider.ProvideHints(playersColours, _colours.Get());
             return hints;
+        }
+
+        public List<Colour> GetColours()
+        {
+            return _colours.Get();
         }
     }
 }

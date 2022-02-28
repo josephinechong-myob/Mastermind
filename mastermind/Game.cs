@@ -6,7 +6,7 @@ namespace mastermind
 {
     public class Game
     {
-        public int GameCount { get; private set; }
+        private int _gameCount;
         private Colours _colours;
         private IRandomNumberGenerator _randomNumberGenerator;
         private GameDialogue _gameDialogue;
@@ -17,7 +17,7 @@ namespace mastermind
         //public mastermind master - replace line 11
         public Game(IConsole console, IRandomNumberGenerator randomNumberGenerator)
         {
-            GameCount = 0;
+            _gameCount = 0;
             _colours = new Colours(new List<Colour>());//to do refactor for updated list
             _randomNumberGenerator = randomNumberGenerator;
             _gameDialogue = new GameDialogue(console);
@@ -27,7 +27,7 @@ namespace mastermind
         public void Run()
         {
             var hints = new List<Hint>();
-            while (GameCount < 60 && !PlayerHasWon(hints))
+            while (_gameCount < 60 && !PlayerHasWon(hints))
             {
                 var player = new Player();
             
@@ -37,9 +37,9 @@ namespace mastermind
                 hints = _mastermind.CheckPlayerColoursGuess(playersColourGuess);
             
                 _gameDialogue.PrintHints(hints);
-                _gameDialogue.PrintGameCount(GameCount);
+                _gameDialogue.PrintGameCount(_gameCount);
                 
-                GameCount++;
+                _gameCount++;
             }
 
             if (PlayerHasWon(hints))
@@ -48,7 +48,7 @@ namespace mastermind
             }
             else
             {
-                _gameDialogue.PrintCorrectColourSolution(_mastermind.Colours.Get());
+                _gameDialogue.PrintCorrectColourSolution(_mastermind.GetColours());
             }
             
             //ask to reset game

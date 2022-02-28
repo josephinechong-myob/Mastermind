@@ -85,10 +85,9 @@ namespace mastermindTest
             
             //act
             game.Run();
-            var actualGameCount = game.GameCount;
 
             //assert
-            Assert.Equal(expectedGameCount, actualGameCount);
+            mockConsole.Verify(n => n.ReadLine(), Times.Exactly(2));
         }
         
         [Fact]
@@ -108,11 +107,10 @@ namespace mastermindTest
             
             //act
             game.Run();
-            var actualGameCount = game.GameCount;
 
             //assert
-            Assert.Equal(expectedGameCount, actualGameCount);
-            mockConsole.Verify(n => n.ReadLine(),Times.Exactly(60));
+            mockConsole.Verify(n => n.ReadLine(),Times.Exactly(expectedGameCount));
+            mockConsole.Verify(n => n.WriteLine("Sorry you have run out of guesses. The correct answer is Red, Red, Red, Red."),Times.Once);
         }
         
         //unhappy path and show a hint 

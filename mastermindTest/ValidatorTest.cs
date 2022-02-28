@@ -31,8 +31,8 @@ namespace mastermindTest
         [InlineData("RED, BLUE, RED, BLUE", true)]
         [InlineData("red, blue, yellow", false)]
         [InlineData("ed", false)]
-        [InlineData("YeLloW, yellow, red, blue", false)]
-        [InlineData("YELLOW, RED, Blue, yellow", false)]
+        [InlineData("YeLloW, yellow, red, blue", true)]
+        [InlineData("YELLOW, RED, Blue, yellow", true)]
         
         public void All_Colours_Are_Capitalised(string input, bool expectedOutput)
         {

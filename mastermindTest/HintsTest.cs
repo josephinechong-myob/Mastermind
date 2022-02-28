@@ -191,7 +191,7 @@ namespace mastermindTest
             Assert.Equal(expectedHints, actualHints);
         }
         
-        [Theory, MemberData(nameof(OneBlackTwoWhiteHintData))] //B W W
+        /*[Theory, MemberData(nameof(OneBlackTwoWhiteHintData))] //B W W
         private void Two_White_And_One_Black_Hints_Should_Be_Provided_When_Player_Guesses_One_Correct_Positioned_Colour_And_Two_Correct_Colour_Improper_Position(List<Colour> mastermindColours, List<Colour> playerColours)
         {
             //arrange
@@ -208,7 +208,7 @@ namespace mastermindTest
 
             //assert
             Assert.Equal(expectedHints, actualHints);
-        }
+        }*/
         
         
         // W W B

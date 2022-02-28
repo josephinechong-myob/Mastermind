@@ -12,7 +12,7 @@ namespace mastermindTest
         {
             //arrange
             var hints = new List<Hint> {Hint.Black, Hint.White};
-            var expectedHintText = "Black, White";
+            var expectedHintText = "Hints: Black, White";
             var mockConsole = new Mock<IConsole>();
             var gameDialogue = new GameDialogue(mockConsole.Object);
 
