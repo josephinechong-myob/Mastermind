@@ -17,7 +17,7 @@ namespace mastermind
         //public mastermind master - replace line 11
         public Game(IConsole console, IRandomNumberGenerator randomNumberGenerator)
         {
-            GameCount = 1;
+            GameCount = 0;
             _colours = new Colours(new List<Colour>());//to do refactor for updated list
             _randomNumberGenerator = randomNumberGenerator;
             _gameDialogue = new GameDialogue(console);
@@ -27,7 +27,7 @@ namespace mastermind
         public void Run()
         {
             var hints = new List<Hint>();
-            while (GameCount <= 60 && !PlayerHasWon(hints))
+            while (GameCount < 60 && !PlayerHasWon(hints))
             {
                 var player = new Player();
             
@@ -52,12 +52,8 @@ namespace mastermind
             }
             
             //ask to reset game
-            
-            
-            
             //if successful reset game
             // after 60 tries tell them they are unsuccessful (reveal solution) ask about reset game
-            
             //game evaluator class?
         }
 

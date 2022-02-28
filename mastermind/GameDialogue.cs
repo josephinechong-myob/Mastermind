@@ -117,7 +117,7 @@ namespace mastermind
 
         public void PrintGameCount(int gameCount)
         {
-            _console.WriteLine($"Game Count is {gameCount}");
+            _console.WriteLine($"Game Count is {gameCount + 1}");
         }
     }
 }

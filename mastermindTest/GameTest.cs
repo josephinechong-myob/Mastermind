@@ -98,21 +98,13 @@ namespace mastermindTest
             var mockConsole = new Mock<IConsole>();
             var mockRandomNumberGenerator = new Mock<IRandomNumberGenerator>();
             //playerinput
-            mockConsole.SetupSequence(playerInput => playerInput.ReadLine())
-                .Returns("Purple, Red, Red, Red")
-                .Returns("Red, Red, Red, Red");
+            mockConsole.Setup(playerInput => playerInput.ReadLine())
+                .Returns("Purple, Red, Red, Red");
             //mock mastermind colours
-            mockRandomNumberGenerator.SetupSequence(mastermind => mastermind.NextRandom(It.IsAny<int>()))
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
+            mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
             var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
-            var expectedGameCount = 2;
+            var expectedGameCount = 60;
             
             //act
             game.Run();
@@ -120,6 +112,7 @@ namespace mastermindTest
 
             //assert
             Assert.Equal(expectedGameCount, actualGameCount);
+            mockConsole.Verify(n => n.ReadLine(),Times.Exactly(60));
         }
         
         //unhappy path and show a hint 
