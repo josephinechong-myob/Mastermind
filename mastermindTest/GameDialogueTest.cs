@@ -190,7 +190,5 @@ namespace mastermindTest
             //assert
             mockConsole.Verify(expression => expression.WriteLine("Your guess resulted in no hints"),Times.Once);  
         }
-
-
     }
 }

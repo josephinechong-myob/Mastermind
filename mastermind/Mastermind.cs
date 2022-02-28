@@ -5,37 +5,21 @@ namespace mastermind
 {
     public class Mastermind
     {
-        private Colours _colours;
-        private ColoursGenerator _coloursGenerator;
-
-        private IRandomNumberGenerator _generator;
-        //store the colours for mastermind
+        public Colours Colours { get; private set; }
+        private readonly IRandomNumberGenerator _generator;
 
         public Mastermind(IRandomNumberGenerator randomNumberGenerator)
         {
-            _coloursGenerator = new ColoursGenerator(randomNumberGenerator);
+            var coloursGenerator = new ColoursGenerator(randomNumberGenerator);
             _generator = randomNumberGenerator;
-            _colours = _coloursGenerator.GenerateNew();
+            Colours = coloursGenerator.GenerateNew();
         }
         
-        
-        //check the guess
-        //assembling a hint array?
-        public List<Hint> CheckPlayerColoursGuess(List<Colour> playersColours)//playerinput
+        public List<Hint> CheckPlayerColoursGuess(List<Colour> playersColours)
         {
-            //compare players colours against mastermind
-            
-            //colours same colours present 
-            //position of crrect colours
-            
-            //shuffle the hint 
             var hintProvider = new HintProvider(_generator);
-
-            hintProvider.ProvideHints(playersColours, _colours.Get());//playerinput
-            return new List<Hint>();
+            var hints = hintProvider.ProvideHints(playersColours, Colours.Get());
+            return hints;
         }
-        
-        
-        //only the mastermind knows what the colours are 
     }
 }

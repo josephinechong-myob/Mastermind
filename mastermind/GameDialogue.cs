@@ -71,6 +71,10 @@ namespace mastermind
             _console.WriteLine("Please enter your guess of four colours for mastermind separated by comma (i.e. Red, Orange, Yellow, Orange)");
         }
 
+        public void PrintAfterPlayerHasWon()
+        {
+            _console.WriteLine("You have won!");
+        }
         private void PrintErrorMessage(string errorMessage)
         {
            _console.WriteLine(errorMessage); 
@@ -99,6 +103,21 @@ namespace mastermind
             {
                 _console.WriteLine("Your guess resulted in no hints");
             }
+        }
+
+        public void PrintCorrectColourSolution(List<Colour> mastermindColours)
+        {
+            var colourString = "";
+            for(int i=0; i < mastermindColours.Count; i++)
+            {
+                colourString += mastermindColours[i].ToString() + (i < mastermindColours.Count - 1 ? ", ": "");
+            }
+            _console.WriteLine($"Sorry you have run out of guesses. The correct answer is {colourString}.");
+        }
+
+        public void PrintGameCount(int gameCount)
+        {
+            _console.WriteLine($"Game Count is {gameCount}");
         }
     }
 }
