@@ -81,13 +81,13 @@ namespace mastermindTest
                 .Returns(0)
                 .Returns(0);
             var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
-            var expectedGameCount = 2;
+            var expectedGuessesCount = 2;
             
             //act
             game.Play();
 
             //assert
-            mockConsole.Verify(n => n.ReadLine(), Times.Exactly(2));
+            mockConsole.Verify(n => n.ReadLine(), Times.Exactly(expectedGuessesCount));
         }
         
         [Fact]
