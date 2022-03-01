@@ -115,9 +115,9 @@ namespace mastermind
             _console.WriteLine($"Sorry you have run out of guesses. The correct answer is {colourString}.");
         }
 
-        public void PrintGameCount(int gameCount)
+        public void PrintGuessesCount(int guessesCount)
         {
-            _console.WriteLine($"Game Count is {gameCount + 1}");
+            _console.WriteLine($"Guesses Count is {guessesCount + 1}");
         }
 
         public bool DoesPlayerWantToReplay()

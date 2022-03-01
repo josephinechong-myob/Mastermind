@@ -113,6 +113,32 @@ namespace mastermindTest
             mockConsole.Verify(n => n.WriteLine("Sorry you have run out of guesses. The correct answer is Red, Red, Red, Red."),Times.Once);
         }
         
-        //unhappy path and show a hint 
+        [Fact]
+        private void Should_Reset_Game_If_Player_Responds_Yes_To_Replay_Game()
+        {
+            //arrange
+            var mockConsole = new Mock<IConsole>();
+            var mockRandomNumberGenerator = new Mock<IRandomNumberGenerator>();
+            //playerinput
+            mockConsole.SetupSequence(playerInput => playerInput.ReadLine())
+                .Returns("Red, Red, Red, Red")
+                .Returns("Y")
+                .Returns("Red, Red, Red, Red")
+                .Returns("N");
+            //mock mastermind colours
+            mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
+                .Returns(0);
+            var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
+            var expectedGameCount = 2;
+            
+            //act
+            game.Run();
+            var actualGameCount = game.GetGameCount();
+
+            //assert
+            Assert.Equal(expectedGameCount, actualGameCount);
+            mockConsole.Verify(n => n.WriteLine("Do you want to replay mastermind? Y - Yes, N - No"),Times.Exactly(2));
+        }
+        
     }
 }

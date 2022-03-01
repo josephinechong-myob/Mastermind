@@ -7,6 +7,7 @@ namespace mastermind
     public class Game
     {
         private int _gameCount;
+        private int _guessesCount;
         private Colours _colours;
         private IRandomNumberGenerator _randomNumberGenerator;
         private GameDialogue _gameDialogue;
@@ -15,9 +16,11 @@ namespace mastermind
         //game input console and that could store all the input and output you need for the game and a game input validator 
         //public colours MastermindsColours
         //public mastermind master - replace line 11
+        //game evaluator class?
         public Game(IConsole console, IRandomNumberGenerator randomNumberGenerator)
         {
             _gameCount = 0;
+            _guessesCount = 0;
             _colours = new Colours(new List<Colour>());//to do refactor for updated list
             _randomNumberGenerator = randomNumberGenerator;
             _gameDialogue = new GameDialogue(console);
@@ -26,19 +29,20 @@ namespace mastermind
 
         public void Run()
         {
-            var PlayerWantsToPlayAgain = true;
+            var playerWantsToPlayAgain = true;
             
-            while(PlayerWantsToPlayAgain)
+            while(playerWantsToPlayAgain)
             {
                 Play();
-                _gameDialogue.DoesPlayerWantToReplay();
+                _gameCount++;
+                playerWantsToPlayAgain = _gameDialogue.DoesPlayerWantToReplay();
             }
         }
 
         public void Play() //refactor to private
         {
             var hints = new List<Hint>();
-            while (_gameCount < 60 && !PlayerHasWon(hints)) //additional condition - reset counter and make master
+            while (_guessesCount < 60 && !PlayerHasWon(hints))
             {
                 var player = new Player();
             
@@ -48,9 +52,9 @@ namespace mastermind
                 hints = _mastermind.CheckPlayerColoursGuess(playersColourGuess);
             
                 _gameDialogue.PrintHints(hints);
-                _gameDialogue.PrintGameCount(_gameCount);
+                _gameDialogue.PrintGuessesCount(_guessesCount);
                 
-                _gameCount++;
+                _guessesCount++;
             }
 
             if (PlayerHasWon(hints))
@@ -61,14 +65,16 @@ namespace mastermind
             {
                 _gameDialogue.PrintCorrectColourSolution(_mastermind.GetColours());
             }
-            
-            //ask to reset game
-            //game evaluator class?
         }
 
         private bool PlayerHasWon(List<Hint> hints)
         {
             return hints.Count == 4  && hints.TrueForAll(hint => hint == Hint.Black);
+        }
+
+        public int GetGameCount()
+        {
+            return _gameCount;
         }
     }
 }
