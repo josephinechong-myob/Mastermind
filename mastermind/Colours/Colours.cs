@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 
-namespace mastermind
+namespace mastermind.Colours
 {
     public class Colours
     {
-        private List<Colour> _coloursList;
+        private readonly List<Colour> _coloursList;
 
         public Colours(List<Colour> coloursList)
         {

@@ -1,33 +1,36 @@
 using System;
 using System.Collections.Generic;
+using mastermind.Colours;
 using mastermind.RandomNumberGenerator;
 
 namespace mastermind
 {
-    public class Game
+    public class Game //mastermind
     {
         private int _gameCount;
         private int _guessesCount;
-        private Colours _colours;
         private readonly GameDialogue _gameDialogue;
-        private readonly Mastermind _mastermind;
+        private readonly Codemaker _codemaker; //game
         
         //game evaluator class?
-        public Game(IConsole console, IRandomNumberGenerator randomNumberGenerator)
+        public Game(IConsole console, IRandomNumberGenerator randomNumberGenerator) //pass in only game??
         {
             _gameCount = 0;
             _guessesCount = 0;
-            _colours = new Colours(new List<Colour>()); //to do refactor for updated list
             _gameDialogue = new GameDialogue(console);
-            _mastermind = new Mastermind(randomNumberGenerator);
+            _codemaker = new Codemaker(randomNumberGenerator);
         }
+        
+        // function/method Check(array/List)
 
-        public void Run()
+        public void Run() //mastermind (game)
         {
             var playerWantsToPlayAgain = true;
             
             while(playerWantsToPlayAgain)
             {
+                _guessesCount = 0;
+                _codemaker.ResetColours(); //reset game need to reset guess counter and mastermind colours (test - list needs to be empty for mastermind to get new colours)
                 Play();
                 _gameCount++;
                 playerWantsToPlayAgain = _gameDialogue.DoesPlayerWantToReplay();
@@ -44,7 +47,7 @@ namespace mastermind
             }
             else
             {
-                _gameDialogue.PrintCorrectColourSolution(_mastermind.GetColours());
+                _gameDialogue.PrintCorrectColourSolution(_codemaker.GetColours());
             }
         }
 
@@ -58,15 +61,17 @@ namespace mastermind
             return _gameCount;
         }
 
-        private List<Hint> GameInProgress()
+        private List<Hint> GameInProgress() //Game + Check
         {
             var hints = new List<Hint>();
             
             while (_guessesCount < 60 && !PlayerHasWon(hints))
             {
-                var player = new Player();
-                var playersColourGuess = _gameDialogue.GetPlayersColourGuess();
-                hints = _mastermind.CheckPlayerColoursGuess(playersColourGuess);
+                var player = new Codebreaker();
+                //get player name
+                player.PlayerColoursGuesses = _gameDialogue.GetPlayersColourGuess();
+                
+                hints = _codemaker.CheckPlayerColoursGuess(player.PlayerColoursGuesses); //checking _codemaker.checkpl.. == game.check()
                 _gameDialogue.PrintHints(hints);
                 _gameDialogue.PrintGuessesCount(_guessesCount);
                 _guessesCount++;

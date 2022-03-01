@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Castle.Components.DictionaryAdapter;
+using mastermind.Colours;
 using mastermind.RandomNumberGenerator;
 
 namespace mastermind

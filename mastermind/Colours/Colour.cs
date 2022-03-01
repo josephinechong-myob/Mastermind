@@ -1,4 +1,4 @@
-namespace mastermind
+namespace mastermind.Colours
 {
     public enum Colour
     {

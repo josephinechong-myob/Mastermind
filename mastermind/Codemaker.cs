@@ -1,18 +1,20 @@
 using System.Collections.Generic;
+using mastermind.Colours;
 using mastermind.RandomNumberGenerator;
 
 namespace mastermind
 {
-    public class Mastermind
+    public class Codemaker //code maker
     {
-        private readonly Colours _colours;
+        private Colours.Colours _colours; //mastermind colours 
         private readonly IRandomNumberGenerator _generator;
+        private readonly ColoursGenerator _coloursGenerator;
 
-        public Mastermind(IRandomNumberGenerator randomNumberGenerator)
+        public Codemaker(IRandomNumberGenerator randomNumberGenerator)
         {
-            var coloursGenerator = new ColoursGenerator(randomNumberGenerator);
+            _coloursGenerator = new ColoursGenerator(randomNumberGenerator);
             _generator = randomNumberGenerator;
-            _colours = coloursGenerator.GenerateNew();
+            _colours = _coloursGenerator.GenerateNew();
         }
         
         public List<Hint> CheckPlayerColoursGuess(List<Colour> playersColours)
@@ -25,6 +27,12 @@ namespace mastermind
         public List<Colour> GetColours()
         {
             return _colours.Get();
+        }
+
+        public void ResetColours()
+        {
+            _colours = new Colours.Colours(new List<Colour>());
+            _colours = _coloursGenerator.GenerateNew();
         }
     }
 }

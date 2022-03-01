@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using mastermind.RandomNumberGenerator;
 
-namespace mastermind
+namespace mastermind.Colours
 {
     public class ColoursGenerator
     {
-        private IRandomNumberGenerator _randomNumberGenerator;
+        private readonly IRandomNumberGenerator _randomNumberGenerator;
         public ColoursGenerator(IRandomNumberGenerator randomNumberGenerator)
         {
             _randomNumberGenerator = randomNumberGenerator;

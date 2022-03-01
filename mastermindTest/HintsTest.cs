@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using mastermind;
+using mastermind.Colours;
 using mastermind.RandomNumberGenerator;
 using Moq;
 using Xunit;
