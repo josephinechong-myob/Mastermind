@@ -25,7 +25,7 @@ namespace mastermindTest
             var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
             
             //act
-            game.Run();
+            game.Play();
 
             //assert
             mockConsole.Verify(console => console.WriteLine("You have won!"),Times.Once());
@@ -54,7 +54,7 @@ namespace mastermindTest
             var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
             
             //act
-            game.Run();
+            game.Play();
 
             //assert
             mockConsole.Verify(console => console.WriteLine("Hints: Black, Black, Black"),Times.Once());
@@ -84,7 +84,7 @@ namespace mastermindTest
             var expectedGameCount = 2;
             
             //act
-            game.Run();
+            game.Play();
 
             //assert
             mockConsole.Verify(n => n.ReadLine(), Times.Exactly(2));
@@ -106,7 +106,7 @@ namespace mastermindTest
             var expectedGameCount = 60;
             
             //act
-            game.Run();
+            game.Play();
 
             //assert
             mockConsole.Verify(n => n.ReadLine(),Times.Exactly(expectedGameCount));

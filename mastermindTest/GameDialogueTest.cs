@@ -190,5 +190,56 @@ namespace mastermindTest
             //assert
             mockConsole.Verify(expression => expression.WriteLine("Your guess resulted in no hints"),Times.Once);  
         }
+
+        [Fact]
+        private void Should_Return_False_When_Player_Enters_No_To_If_They_Want_To_Replay_Game()
+        {
+            //arrange
+            var mockConsole = new Mock<IConsole>();
+            mockConsole.Setup(n => n.ReadLine()).Returns("N");
+            var gameDialogue = new GameDialogue(mockConsole.Object);
+            var expectedPlayerResponse = false;
+
+            //act
+            var actualPlayerResponse = gameDialogue.DoesPlayerWantToReplay();
+            
+            //assert
+            Assert.Equal(expectedPlayerResponse, actualPlayerResponse);
+            mockConsole.Verify(expression => expression.WriteLine("Do you want to replay mastermind? Y - Yes, N - No"));
+        }
+        
+        [Fact]
+        private void Should_Return_True_When_Player_Enters_Yes_To_If_They_Want_To_Replay_Game()
+        {
+            //arrange
+            var mockConsole = new Mock<IConsole>();
+            mockConsole.Setup(n => n.ReadLine()).Returns("Y");
+            var gameDialogue = new GameDialogue(mockConsole.Object);
+            var expectedPlayerResponse = true;
+
+            //act
+            var actualPlayerResponse = gameDialogue.DoesPlayerWantToReplay();
+            
+            //assert
+            Assert.Equal(expectedPlayerResponse, actualPlayerResponse);
+            mockConsole.Verify(expression => expression.WriteLine("Do you want to replay mastermind? Y - Yes, N - No"));
+        }
+        
+        [Fact]
+        private void Should_Return_Error_When_Player_Enters_Invalid_Response_To_If_They_Want_To_Replay_Game()
+        {
+            //arrange
+            var mockConsole = new Mock<IConsole>();
+            mockConsole.SetupSequence(n => n.ReadLine())
+                .Returns("9")
+                .Returns("N");
+            var gameDialogue = new GameDialogue(mockConsole.Object);
+
+            //act
+            gameDialogue.DoesPlayerWantToReplay();
+            
+            //assert
+            mockConsole.Verify(expression => expression.WriteLine("Error: you have given an invalid entry. Please enter 'Y' - Yes or 'N' - No"));
+        }
     }
 }

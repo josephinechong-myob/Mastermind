@@ -119,5 +119,17 @@ namespace mastermind
         {
             _console.WriteLine($"Game Count is {gameCount + 1}");
         }
+
+        public bool DoesPlayerWantToReplay()
+        {
+            _console.WriteLine("Do you want to replay mastermind? Y - Yes, N - No");
+            var response = _console.ReadLine();
+            while (!_validator.ResponseIsYOrN(response))
+            {
+                PrintErrorMessage(Constants.ErrorMessageInvalidYesOrNo);
+                response = _console.ReadLine();
+            }
+            return response == "Y";
+        }
     }
 }

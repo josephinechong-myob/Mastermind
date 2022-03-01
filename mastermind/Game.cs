@@ -26,8 +26,19 @@ namespace mastermind
 
         public void Run()
         {
+            var PlayerWantsToPlayAgain = true;
+            
+            while(PlayerWantsToPlayAgain)
+            {
+                Play();
+                _gameDialogue.DoesPlayerWantToReplay();
+            }
+        }
+
+        public void Play() //refactor to private
+        {
             var hints = new List<Hint>();
-            while (_gameCount < 60 && !PlayerHasWon(hints))
+            while (_gameCount < 60 && !PlayerHasWon(hints)) //additional condition - reset counter and make master
             {
                 var player = new Player();
             
@@ -52,8 +63,6 @@ namespace mastermind
             }
             
             //ask to reset game
-            //if successful reset game
-            // after 60 tries tell them they are unsuccessful (reveal solution) ask about reset game
             //game evaluator class?
         }
 

@@ -40,5 +40,15 @@ namespace mastermind
         {
             return playerInput.Split(',').Any(colour => !IsValidColour(colour));
         }
+
+        public bool ResponseIsYOrN(string playerInput)
+        {
+            playerInput = playerInput.ToUpper();
+            var pattern = "(N|Y)";
+            var validPattern = new Regex(pattern);
+            var stringIsNotEmpty = playerInput != String.Empty;
+            var patternIsMatch = validPattern.IsMatch(playerInput);
+            return stringIsNotEmpty && patternIsMatch;
+        }
     }
 }
