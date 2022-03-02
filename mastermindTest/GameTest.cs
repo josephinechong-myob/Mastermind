@@ -133,9 +133,9 @@ namespace mastermindTest
             game.Run();
 
             //assert
-            //mockConsole.Verify(n => n.ReadLine(),Times.Exactly(expectedGuessCount));
+            //mockConsole.Verify(n => n.ReadLine(),Times.Exactly(expectedGuessCount)); can't do this as it would need to be 61 times to include the 'N'
             mockConsole.Verify(n => n.WriteLine("Hints: Black, Black, Black"), Times.Exactly(expectedGuessCount));
-            mockConsole.Verify(n => n.WriteLine("Sorry you have run out of guesses. The correct answer is Red, Red, Red, Red."),Times.Once);
+            mockConsole.Verify(n => n.WriteLine("Error: you have had more than 60 tries! Sorry you have run out of guesses. The correct answer is Red, Red, Red, Red."),Times.Once);
         }
         
         [Fact]

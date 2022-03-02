@@ -2,14 +2,11 @@
 {
     class Program
     {
-        static void Main()
+        private static void Main()
         { 
             var randomNumberGenerator = new RandomNumberGenerator.RandomNumberGenerator();
             var console = new GameConsole();
-            var game = new Game(console, randomNumberGenerator); // new mastermind(game/codemaker)
-            //mastermind
-            //mastermind(game) <- DI
-            
+            var game = new Game(console, randomNumberGenerator);
             game.Run();
         }
     }

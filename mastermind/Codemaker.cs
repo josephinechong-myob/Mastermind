@@ -4,7 +4,7 @@ using mastermind.RandomNumberGenerator;
 
 namespace mastermind
 {
-    public class Codemaker //code maker
+    public class Codemaker
     {
         private Colours.Colours _colours; //mastermind colours 
         private readonly IRandomNumberGenerator _generator;

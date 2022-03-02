@@ -46,7 +46,7 @@ namespace mastermind
             {
                 colourString += mastermindColours[i].ToString() + (i < mastermindColours.Count - 1 ? ", ": "");
             }
-            _console.WriteLine($"Sorry you have run out of guesses. The correct answer is {colourString}.");
+            _console.WriteLine($"{Constants.ErrorMessageExceeding60Attempts} Sorry you have run out of guesses. The correct answer is {colourString}.");
         }
 
         public void PrintGuessesCount(int guessesCount)

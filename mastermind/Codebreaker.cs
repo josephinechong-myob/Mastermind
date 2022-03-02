@@ -3,7 +3,7 @@ using mastermind.Colours;
 
 namespace mastermind
 {
-    public class Codebreaker //did not create an interface as did not want to to clutter codebase "YAGNI"
+    public class Codebreaker 
     {
         public List<Colour> PlayerColoursGuesses;
         
