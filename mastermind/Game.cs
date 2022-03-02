@@ -36,9 +36,9 @@ namespace mastermind
             }
         }
 
-        public void Play() //refactor to private
+        private void Play() //refactor to private
         {
-            var hints = GameInProgress();
+            var hints = GetHint();
 
             if (PlayerHasWon(hints))
             {
@@ -60,7 +60,7 @@ namespace mastermind
             return _gameCount;
         }
 
-        private List<Hint> GameInProgress() //Game + Check
+        private List<Hint> GetHint() //Game + Check
         {
             var hints = new List<Hint>();
             
@@ -70,7 +70,7 @@ namespace mastermind
                 //get player name
                 player.PlayerColoursGuesses = _gameDialogue.GetPlayersColourGuess();
                 
-                hints = _codemaker.CheckPlayerColoursGuess(player.PlayerColoursGuesses); //checking _codemaker.checkpl.. == game.check()
+                hints = _codemaker.CheckPlayerColoursGuess(player.PlayerColoursGuesses); // == game.check()
                 _gameDialogue.PrintHints(hints);
                 _gameDialogue.PrintGuessesCount(_guessesCount);
                 _guessesCount++;

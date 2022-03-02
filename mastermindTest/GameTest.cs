@@ -8,27 +8,29 @@ namespace mastermindTest
     public class GameTest
     {
         [Fact]
-        private void Should_Reset_Game_After_Sixty_Tries_Or_Player_Has_Won()
+        private void Should_Print_Player_Has_Won_If_Player_Guesses_Correctly()
         {
             //arrange
             var mockConsole = new Mock<IConsole>();
             var mockRandomNumberGenerator = new Mock<IRandomNumberGenerator>();
             //playerinput
             mockConsole.SetupSequence(playerInput => playerInput.ReadLine())
-                .Returns("Green, Red, Red, Red");
+                .Returns("Red, Red, Red, Red")
+                .Returns("N");
             //mock mastermind colours
-            mockRandomNumberGenerator.SetupSequence(mastermind => mastermind.NextRandom(It.IsAny<int>()))
-                .Returns(2)
-                .Returns(0)
-                .Returns(0)
+            mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
             var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
+            var expectedGameCount = 1;
             
             //act
-            game.Play();
+            game.Run();
+            var actualGameCount = game.GetGameCount();
 
             //assert
-            mockConsole.Verify(console => console.WriteLine("You have won!"),Times.Once());
+            Assert.Equal(expectedGameCount, actualGameCount);
+            mockConsole.Verify(console => console.WriteLine("WON!"),Times.Once());
+            mockConsole.Verify(n => n.WriteLine("Do you want to replay mastermind? Y - Yes, N - No"),Times.Exactly(1));
         }
         
         [Fact]
@@ -40,54 +42,18 @@ namespace mastermindTest
             //playerinput
             mockConsole.SetupSequence(playerInput => playerInput.ReadLine())
                 .Returns("Purple, Red, Red, Red")
-                .Returns("Red, Red, Red, Red");
+                .Returns("Red, Red, Red, Red")
+                .Returns("N");
             //mock mastermind colours
-            mockRandomNumberGenerator.SetupSequence(mastermind => mastermind.NextRandom(It.IsAny<int>()))
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
+            mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
             var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
             
             //act
-            game.Play();
+            game.Run();
 
             //assert
             mockConsole.Verify(console => console.WriteLine("Hints: Black, Black, Black"),Times.Once());
-        }
-        
-        [Fact]
-        private void Should_Increment_Game_Count_By_Two_When_Player_Makes_Two_Guesses()
-        {
-            //arrange
-            var mockConsole = new Mock<IConsole>();
-            var mockRandomNumberGenerator = new Mock<IRandomNumberGenerator>();
-            //playerinput
-            mockConsole.SetupSequence(playerInput => playerInput.ReadLine())
-                .Returns("Purple, Red, Red, Red")
-                .Returns("Red, Red, Red, Red");
-            //mock mastermind colours
-            mockRandomNumberGenerator.SetupSequence(mastermind => mastermind.NextRandom(It.IsAny<int>()))
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0)
-                .Returns(0);
-            var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
-            var expectedGuessesCount = 2;
-            
-            //act
-            game.Play();
-
-            //assert
-            mockConsole.Verify(n => n.ReadLine(), Times.Exactly(expectedGuessesCount));
         }
         
         [Fact]
@@ -96,20 +62,79 @@ namespace mastermindTest
             //arrange
             var mockConsole = new Mock<IConsole>();
             var mockRandomNumberGenerator = new Mock<IRandomNumberGenerator>();
-            //playerinput
-            mockConsole.Setup(playerInput => playerInput.ReadLine())
-                .Returns("Purple, Red, Red, Red");
-            //mock mastermind colours
+            mockConsole.SetupSequence(playerInput => playerInput.ReadLine())
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("Purple, Red, Red, Red")
+                .Returns("N");
             mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
             var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
-            var expectedGameCount = 60;
+            var expectedGuessCount = 60;
             
             //act
-            game.Play();
+            game.Run();
 
             //assert
-            mockConsole.Verify(n => n.ReadLine(),Times.Exactly(expectedGameCount));
+            //mockConsole.Verify(n => n.ReadLine(),Times.Exactly(expectedGuessCount));
+            mockConsole.Verify(n => n.WriteLine("Hints: Black, Black, Black"), Times.Exactly(expectedGuessCount));
             mockConsole.Verify(n => n.WriteLine("Sorry you have run out of guesses. The correct answer is Red, Red, Red, Red."),Times.Once);
         }
         
@@ -140,5 +165,29 @@ namespace mastermindTest
             mockConsole.Verify(n => n.WriteLine("Do you want to replay mastermind? Y - Yes, N - No"),Times.Exactly(2));
         }
         
+        [Fact]
+        private void Should_End_Game_If_Player_Responds_No_To_Replay_Game()
+        {
+            //arrange
+            var mockConsole = new Mock<IConsole>();
+            var mockRandomNumberGenerator = new Mock<IRandomNumberGenerator>();
+            //playerinput
+            mockConsole.SetupSequence(playerInput => playerInput.ReadLine())
+                .Returns("Red, Red, Red, Red")
+                .Returns("N");
+            //mock mastermind colours
+            mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
+                .Returns(0);
+            var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
+            var expectedGameCount = 1;
+            
+            //act
+            game.Run();
+            var actualGameCount = game.GetGameCount();
+
+            //assert
+            Assert.Equal(expectedGameCount, actualGameCount);
+            mockConsole.Verify(n => n.WriteLine("Do you want to replay mastermind? Y - Yes, N - No"),Times.Exactly(1));
+        }
     }
 }

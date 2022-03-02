@@ -114,7 +114,7 @@ namespace mastermind
 
         public void PrintAfterPlayerHasWon()
         {
-            _console.WriteLine("You have won!");
+            _console.WriteLine("WON!");
         }
         private void PrintErrorMessage(string errorMessage)
         {
