@@ -231,11 +231,26 @@ namespace mastermindTest
             Assert.Equal(expectedHints, actualHints);
         }
         
-        
-        // W W W B
-        // W W B B
-        
+        [Theory, MemberData(nameof(OneBlackThreeWhiteHintData))] //B W W W
+        private void Three_White_And_One_Black_Hints_Should_Be_Provided_When_Player_Guesses_One_Correct_Positioned_Colour_And_Three_Correct_Colour_Improper_Position(List<Colour> mastermindColours, List<Colour> playerColours)
+        {
+            //arrange
+            var mockRandomiser = new Mock<IRandomNumberGenerator>();
+            mockRandomiser.SetupSequence(index => index.NextRandom(It.IsAny<int>()))
+                .Returns(0)
+                .Returns(0)
+                .Returns(0)
+                .Returns(0);
+            var hintsProvider = new HintProvider(mockRandomiser.Object);
+            var expectedHints = new List<Hint> {Hint.Black, Hint.White, Hint.White, Hint.White};
 
+            //act
+            var actualHints = hintsProvider.ProvideHints(playerColours, mastermindColours);
+
+            //assert
+            Assert.Equal(expectedHints, actualHints);
+        }
+        
         public static IEnumerable<object[]> OneBlackHintData => new List<object[]>
         {
             new object[] {new List<Colour> {Colour.Green, Colour.Red, Colour.Green, Colour.Green}, new List<Colour> {Colour.Blue, Colour.Red, Colour.Yellow, Colour.Blue}},
@@ -409,6 +424,21 @@ namespace mastermindTest
             new object[] {new List<Colour> {Colour.Yellow, Colour.Orange, Colour.Blue, Colour.Purple}, new List<Colour> {Colour.Orange, Colour.Yellow, Colour.Blue, Colour.Purple}},
             new object[] {new List<Colour> {Colour.Green, Colour.Red, Colour.Blue, Colour.Yellow}, new List<Colour> {Colour.Green, Colour.Red, Colour.Yellow, Colour.Blue}},
             new object[] {new List<Colour> {Colour.Yellow, Colour.Purple, Colour.Blue, Colour.Green}, new List<Colour> {Colour.Yellow, Colour.Purple, Colour.Green, Colour.Blue}}
+        };
+        
+        public static IEnumerable<object[]> OneBlackThreeWhiteHintData => new List<object[]>
+        {
+            new object[] {new List<Colour> {Colour.Green, Colour.Yellow, Colour.Red, Colour.Blue}, new List<Colour> {Colour.Green, Colour.Red, Colour.Blue, Colour.Yellow}},
+            new object[] {new List<Colour> {Colour.Yellow, Colour.Green, Colour.Blue, Colour.Yellow}, new List<Colour> {Colour.Yellow, Colour.Yellow, Colour.Green, Colour.Blue}},
+            new object[] {new List<Colour> {Colour.Green, Colour.Orange, Colour.Red, Colour.Purple}, new List<Colour> {Colour.Green, Colour.Red, Colour.Purple, Colour.Orange}},
+            new object[] {new List<Colour> {Colour.Blue, Colour.Purple, Colour.Green, Colour.Red}, new List<Colour> {Colour.Blue, Colour.Red, Colour.Purple, Colour.Green}},
+            new object[] {new List<Colour> {Colour.Red, Colour.Purple, Colour.Yellow, Colour.Green}, new List<Colour> {Colour.Red, Colour.Green, Colour.Purple, Colour.Yellow}},
+            new object[] {new List<Colour> {Colour.Yellow, Colour.Green, Colour.Purple, Colour.Green}, new List<Colour> {Colour.Green, Colour.Green, Colour.Yellow, Colour.Purple}},
+            new object[] {new List<Colour> {Colour.Green, Colour.Orange, Colour.Red, Colour.Blue}, new List<Colour> {Colour.Green, Colour.Red, Colour.Blue, Colour.Orange}},
+            new object[] {new List<Colour> {Colour.Green, Colour.Red, Colour.Blue, Colour.Orange}, new List<Colour> {Colour.Green, Colour.Orange, Colour.Red, Colour.Blue}},
+            new object[] {new List<Colour> {Colour.Yellow, Colour.Orange, Colour.Blue, Colour.Purple}, new List<Colour> {Colour.Orange, Colour.Purple, Colour.Blue, Colour.Yellow}},
+            new object[] {new List<Colour> {Colour.Green, Colour.Red, Colour.Blue, Colour.Yellow}, new List<Colour> {Colour.Green, Colour.Blue, Colour.Yellow, Colour.Red}},
+            new object[] {new List<Colour> {Colour.Yellow, Colour.Blue, Colour.Red, Colour.Green}, new List<Colour> {Colour.Yellow, Colour.Red, Colour.Green, Colour.Blue}}
         };
         
         [Fact] //happy path = providing a hint
