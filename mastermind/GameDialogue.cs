@@ -16,7 +16,7 @@ namespace mastermind
             _validator = new Validator();
         }
         
-        public List<Colour> GetPlayersColourGuess() //return 4 colour enums
+        public List<Colour> GetPlayersColourGuess()
         {
             var playerInput = GetPlayerColourInput();
 
@@ -25,7 +25,47 @@ namespace mastermind
             
             return ConvertStringToEnumForColourGuesses(playerInput);
         }
+        
+        public void PrintHints(List<Hint> hints)
+        {
+            if (hints.Count != 0)
+            {
+                var hintText = GetHints(hints);
+                _console.WriteLine($"Hints: {hintText}"); 
+            }
+            else
+            {
+                _console.WriteLine("Your guess resulted in no hints");
+            }
+        }
 
+        public void PrintCorrectColourSolution(List<Colour> mastermindColours)
+        {
+            var colourString = "";
+            for(int i=0; i < mastermindColours.Count; i++)
+            {
+                colourString += mastermindColours[i].ToString() + (i < mastermindColours.Count - 1 ? ", ": "");
+            }
+            _console.WriteLine($"Sorry you have run out of guesses. The correct answer is {colourString}.");
+        }
+
+        public void PrintGuessesCount(int guessesCount)
+        {
+            _console.WriteLine($"Guesses Count is {guessesCount + 1}");
+        }
+
+        public bool DoesPlayerWantToReplay()
+        {
+            _console.WriteLine("Do you want to replay mastermind? Y - Yes, N - No");
+            var response = _console.ReadLine();
+            while (!_validator.ResponseIsYOrN(response))
+            {
+                PrintErrorMessage(Constants.ErrorMessageInvalidYesOrNo);
+                response = _console.ReadLine();
+            }
+            return response == "Y";
+        }
+        
         private string ConvertToTitleCase(string colour)
         {
             colour = colour.Replace(" ", "");
@@ -91,46 +131,6 @@ namespace mastermind
             }
             
             return hintText;
-        }
-
-        public void PrintHints(List<Hint> hints)
-        {
-            if (hints.Count != 0)
-            {
-                var hintText = GetHints(hints);
-                _console.WriteLine($"Hints: {hintText}"); 
-            }
-            else
-            {
-                _console.WriteLine("Your guess resulted in no hints");
-            }
-        }
-
-        public void PrintCorrectColourSolution(List<Colour> mastermindColours)
-        {
-            var colourString = "";
-            for(int i=0; i < mastermindColours.Count; i++)
-            {
-                colourString += mastermindColours[i].ToString() + (i < mastermindColours.Count - 1 ? ", ": "");
-            }
-            _console.WriteLine($"Sorry you have run out of guesses. The correct answer is {colourString}.");
-        }
-
-        public void PrintGuessesCount(int guessesCount)
-        {
-            _console.WriteLine($"Guesses Count is {guessesCount + 1}");
-        }
-
-        public bool DoesPlayerWantToReplay()
-        {
-            _console.WriteLine("Do you want to replay mastermind? Y - Yes, N - No");
-            var response = _console.ReadLine();
-            while (!_validator.ResponseIsYOrN(response))
-            {
-                PrintErrorMessage(Constants.ErrorMessageInvalidYesOrNo);
-                response = _console.ReadLine();
-            }
-            return response == "Y";
         }
     }
 }

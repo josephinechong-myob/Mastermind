@@ -5,6 +5,4 @@ namespace mastermind
         bool HasNext();
         T GetNext();
     }
-    
-    
 }

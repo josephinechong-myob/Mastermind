@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -7,10 +6,6 @@ namespace mastermind
 {
     public class Validator
     {
-        public Validator()
-        {
-        }
-
         public bool IsValidColourGuess(string playerResponse)// empty string, non-letters, no comma, check that there are 3 commas (4 colours), are the colour valid colours - regex 
         {
             playerResponse = playerResponse.ToUpper(); //use () not [] for alternative colour options

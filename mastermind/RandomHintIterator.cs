@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Castle.Components.DictionaryAdapter;
 using mastermind.Colours;
 using mastermind.RandomNumberGenerator;
 
@@ -7,8 +6,8 @@ namespace mastermind
 {
     public class RandomHintIterator : IIterator<Hint>
     {
-        private IRandomNumberGenerator _generator;
-        private List<Hint> _hints;
+        private readonly IRandomNumberGenerator _generator;
+        private readonly List<Hint> _hints;
 
         public RandomHintIterator(List<Hint> hints, IRandomNumberGenerator generator)
         {

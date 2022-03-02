@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace mastermind
+﻿namespace mastermind
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         { 
             var randomNumberGenerator = new RandomNumberGenerator.RandomNumberGenerator();
             var console = new GameConsole();
