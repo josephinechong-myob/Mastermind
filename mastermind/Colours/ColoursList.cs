@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace mastermind.Colours
 {
-    public class Colours
+    public class ColoursList //mastermind/mastermind?? 
     {
         private readonly List<Colour> _coloursList;
 
-        public Colours(List<Colour> coloursList)
+        public ColoursList(List<Colour> coloursList)
         {
             _coloursList = coloursList;
         }

@@ -11,7 +11,7 @@ namespace mastermind.Colours
             _randomNumberGenerator = randomNumberGenerator;
         }
 
-        public Colours GenerateNew(int numberOfColours = 4) //could it be made static (static methods can't use fields and we need to use random number generator in lin 20)
+        public ColoursList GenerateNew(int numberOfColours = 4) //could it be made static (static methods can't use fields and we need to use random number generator in lin 20)
         {
             var colours = ColourExtensions.GetColour();
             var chosenColours = new List<Colour>();
@@ -23,7 +23,7 @@ namespace mastermind.Colours
                 chosenColours.Add(randomColour);
             }
 
-            return new Colours(chosenColours);
+            return new ColoursList(chosenColours);
         }
     }
 }

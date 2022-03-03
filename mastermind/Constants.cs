@@ -2,6 +2,8 @@ namespace mastermind
 {
     public static class Constants
     {
+        public const int MaximumNumberOfHints = 4;
+        
         public const int MaximumNumberOfColourGuesses = 60;
         
         public const string ErrorMessageInvalidColour = "Error: you have given an invalid colour!";

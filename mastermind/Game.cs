@@ -52,7 +52,7 @@ namespace mastermind
 
         private bool PlayerHasWon(List<Hint> hints)
         {
-            return hints.Count == 4  && hints.TrueForAll(hint => hint == Hint.Black);
+            return hints.Count == Constants.MaximumNumberOfHints  && hints.TrueForAll(hint => hint == Hint.Black);
         }
 
         public int GetGameCount()
@@ -66,11 +66,11 @@ namespace mastermind
             
             while (_guessesCount < Constants.MaximumNumberOfColourGuesses && !PlayerHasWon(hints))
             {
-                var player = new Codebreaker();
-                //get player name
-                player.PlayerColoursGuesses = _gameDialogue.GetPlayersColourGuess();
+                var player = new Codebreaker(); //nice to have: get player name
+                //player.PlayerColoursGuesses = _gameDialogue.GetPlayersColourGuess(); <- getting players 
+                player.UpdateGuesses(_gameDialogue.GetPlayersColourGuess());
                 
-                hints = _codemaker.CheckPlayerColoursGuess(player.PlayerColoursGuesses); // == game.check()
+                hints = _codemaker.CheckPlayerColoursGuess(player.CurrentGuess); // == game.check()
                 
                 _gameDialogue.PrintHints(hints);
                 _gameDialogue.PrintGuessesCount(_guessesCount);
