@@ -15,21 +15,11 @@ namespace mastermind
         {
             var filteredMasterMindColours = new List<Colour>();
             var filteredPlayerColours = new List<Colour>();
-            
-            // R G B B
-            // B B B G
-            
-
             var hintList = ProvideBlackHints(mastermindColours, playerColours, filteredMasterMindColours, filteredPlayerColours);
             hintList = ProvideWhiteHints(hintList, filteredMasterMindColours, filteredPlayerColours);
             
             return ProvideRandomHints(hintList);
         }
-        
-        //var randomisedHintList = hintList.OrderBy(item => _generator.NextRandom(hintList.Count)).ToList();
-        //white hint is find colour match - count black hints
-        /*var numberOfWhiteHints = filteredPlayerColours.Where(playerColour => filteredMasterMindColours.Any(mastermindColour => mastermindColour == playerColour)).ToList().Count;*/
-        //hintList.AddRange(Enumerable.Repeat(Hint.White, numberOfWhiteHints));
         
         private List<Hint> ProvideBlackHints(List<Colour>mastermindColours, List<Colour>playerColours, List<Colour>filteredMasterMindColours, List<Colour>filteredPlayerColours)
         {
@@ -85,3 +75,8 @@ namespace mastermind
         }
     }
 }
+
+//var randomisedHintList = hintList.OrderBy(item => _generator.NextRandom(hintList.Count)).ToList();
+//white hint is find colour match - count black hints
+/*var numberOfWhiteHints = filteredPlayerColours.Where(playerColour => filteredMasterMindColours.Any(mastermindColour => mastermindColour == playerColour)).ToList().Count;*/
+//hintList.AddRange(Enumerable.Repeat(Hint.White, numberOfWhiteHints));

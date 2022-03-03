@@ -14,8 +14,8 @@ namespace mastermind
         //game evaluator class?
         public Game(IConsole console, IRandomNumberGenerator randomNumberGenerator) //pass in only game??
         {
-            _gameCount = 0;
-            _guessesCount = 0;
+            _gameCount = 0; //reset game
+            _guessesCount = 0; //60
             _gameDialogue = new GameDialogue(console);
             _codemaker = new Codemaker(randomNumberGenerator);
         }
@@ -64,19 +64,23 @@ namespace mastermind
         {
             var hints = new List<Hint>();
             
-            while (_guessesCount < 60 && !PlayerHasWon(hints))
+            while (_guessesCount < Constants.MaximumNumberOfColourGuesses && !PlayerHasWon(hints))
             {
                 var player = new Codebreaker();
                 //get player name
                 player.PlayerColoursGuesses = _gameDialogue.GetPlayersColourGuess();
                 
                 hints = _codemaker.CheckPlayerColoursGuess(player.PlayerColoursGuesses); // == game.check()
+                
                 _gameDialogue.PrintHints(hints);
                 _gameDialogue.PrintGuessesCount(_guessesCount);
+                
                 _guessesCount++;
             }
 
             return hints;
         }
     }
+    
+    
 }
