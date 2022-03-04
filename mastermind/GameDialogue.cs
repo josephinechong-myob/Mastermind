@@ -51,7 +51,7 @@ namespace mastermind
 
         public void PrintGuessesCount(int guessesCount)
         {
-            _console.WriteLine($"Guesses Count is {guessesCount + 1}");
+            _console.WriteLine($"Guesses Count is {guessesCount}");
         }
 
         public bool DoesPlayerWantToReplay()

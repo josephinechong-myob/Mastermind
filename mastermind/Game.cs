@@ -34,10 +34,36 @@ namespace mastermind
 
         private void Play()
         {
-            var hints = GetHint();
+            var hints = new List<Hint>();
             
-            //EvaluateGuesses
+            while(IsGameIncomplete(hints))
+            {
+                hints = PlayRound();
+                PrintPostRoundInformation(hints);
+            }
+            
+            DisplayOutcome(hints);
+        }
 
+        private bool IsGameIncomplete(List<Hint> hints)
+        {
+            return _codebreaker.Guesses.Count < Constants.MaximumNumberOfColourGuesses && !PlayerHasWon(hints);
+        }
+
+        private List<Hint> PlayRound()
+        {
+            _codebreaker.UpdateGuesses(_gameDialogue.GetPlayersColourGuess());
+            return _codemaker.CheckPlayerColoursGuess(_codebreaker.CurrentGuess);
+        }
+
+        private void PrintPostRoundInformation(List<Hint> hints)
+        {
+            _gameDialogue.PrintHints(hints);
+            _gameDialogue.PrintGuessesCount(_codebreaker.Guesses.Count); //you guess this number of times and have this many remaining guesses
+        }
+
+        private void DisplayOutcome(List<Hint> hints)
+        {
             if (PlayerHasWon(hints))
             {
                 _gameDialogue.PrintAfterPlayerHasWon();
@@ -45,28 +71,12 @@ namespace mastermind
             else
             {
                 _gameDialogue.PrintCorrectColourSolution(_codemaker.GetColours());
-            }
+            } 
         }
 
         private bool PlayerHasWon(List<Hint> hints)
         {
             return hints.Count == Constants.MaximumNumberOfHints  && hints.TrueForAll(hint => hint == Hint.Black);
-        }
-
-        private List<Hint> GetHint()
-        {
-            var hints = new List<Hint>();
-            
-            while (_codebreaker.Guesses.Count < Constants.MaximumNumberOfColourGuesses && !PlayerHasWon(hints))
-            {
-                _codebreaker.UpdateGuesses(_gameDialogue.GetPlayersColourGuess());
-                hints = _codemaker.CheckPlayerColoursGuess(_codebreaker.CurrentGuess);
-                
-                _gameDialogue.PrintHints(hints);
-                _gameDialogue.PrintGuessesCount(_codebreaker.Guesses.Count);
-            }
-
-            return hints;
         }
     }
 }
