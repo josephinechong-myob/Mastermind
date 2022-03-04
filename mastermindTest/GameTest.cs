@@ -19,14 +19,11 @@ namespace mastermindTest
             mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
             var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
-            var expectedGameCount = 1;
-            
+
             //act
             game.Run();
-            var actualGameCount = game.GetGameCount();
 
             //assert
-            Assert.Equal(expectedGameCount, actualGameCount);
             mockConsole.Verify(console => console.WriteLine("WON!"),Times.Once());
             mockConsole.Verify(n => n.WriteLine("Do you want to replay mastermind? Y - Yes, N - No"),Times.Exactly(1));
         }
@@ -147,15 +144,13 @@ namespace mastermindTest
             mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
             var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
-            var expectedGameCount = 2;
-            
+
             //act
             game.Run();
-            var actualGameCount = game.GetGameCount();
 
             //assert
-            Assert.Equal(expectedGameCount, actualGameCount);
             mockConsole.Verify(n => n.WriteLine("Do you want to replay mastermind? Y - Yes, N - No"),Times.Exactly(2));
+            mockConsole.Verify(n => n.ReadLine(),Times.Exactly(4));
         }
         
         [Fact]
@@ -170,14 +165,11 @@ namespace mastermindTest
             mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
             var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
-            var expectedGameCount = 1;
-            
+
             //act
             game.Run();
-            var actualGameCount = game.GetGameCount();
 
             //assert
-            Assert.Equal(expectedGameCount, actualGameCount);
             mockConsole.Verify(n => n.WriteLine("Do you want to replay mastermind? Y - Yes, N - No"),Times.Exactly(1));
         }
     }

@@ -21,6 +21,18 @@ namespace mastermind
             var colourlist = new ColoursList(guess);
             Guesses.Add(colourlist);
         }
+
+        public int GetNumberOfGuesses()
+        {
+            var numberOfGuesses = 0;
+
+            foreach (var guess in Guesses)
+            {
+                numberOfGuesses++;
+            }
+
+            return numberOfGuesses;
+        }
         
     }
 }

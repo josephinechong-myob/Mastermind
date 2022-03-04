@@ -6,18 +6,16 @@ namespace mastermind
 {
     public class Game //mastermind
     {
-        private int _gameCount;
-        private int _guessesCount;
         private readonly GameDialogue _gameDialogue;
         private readonly Codemaker _codemaker; //game
+        private readonly Codebreaker _codebreaker;
         
         //game evaluator class?
         public Game(IConsole console, IRandomNumberGenerator randomNumberGenerator) //pass in only game??
         {
-            _gameCount = 0; //reset game
-            _guessesCount = 0; //60
             _gameDialogue = new GameDialogue(console);
             _codemaker = new Codemaker(randomNumberGenerator);
+            _codebreaker = new Codebreaker();
         }
         
         // function/method Check(array/List)
@@ -28,17 +26,17 @@ namespace mastermind
             
             while(playerWantsToPlayAgain)
             {
-                _guessesCount = 0;
-                _codemaker.ResetColours(); //reset game need to reset guess counter and mastermind colours (test - list needs to be empty for mastermind to get new colours)
+                _codemaker.ResetColours();
                 Play();
-                _gameCount++;
                 playerWantsToPlayAgain = _gameDialogue.DoesPlayerWantToReplay();
             }
         }
 
-        private void Play() //refactor to private
+        private void Play()
         {
             var hints = GetHint();
+            
+            //EvaluateGuesses
 
             if (PlayerHasWon(hints))
             {
@@ -55,32 +53,20 @@ namespace mastermind
             return hints.Count == Constants.MaximumNumberOfHints  && hints.TrueForAll(hint => hint == Hint.Black);
         }
 
-        public int GetGameCount()
-        {
-            return _gameCount;
-        }
-
-        private List<Hint> GetHint() //Game + Check
+        private List<Hint> GetHint()
         {
             var hints = new List<Hint>();
             
-            while (_guessesCount < Constants.MaximumNumberOfColourGuesses && !PlayerHasWon(hints))
+            while (_codebreaker.Guesses.Count < Constants.MaximumNumberOfColourGuesses && !PlayerHasWon(hints))
             {
-                var player = new Codebreaker(); //nice to have: get player name
-                //player.PlayerColoursGuesses = _gameDialogue.GetPlayersColourGuess(); <- getting players 
-                player.UpdateGuesses(_gameDialogue.GetPlayersColourGuess());
-                
-                hints = _codemaker.CheckPlayerColoursGuess(player.CurrentGuess); // == game.check()
+                _codebreaker.UpdateGuesses(_gameDialogue.GetPlayersColourGuess());
+                hints = _codemaker.CheckPlayerColoursGuess(_codebreaker.CurrentGuess);
                 
                 _gameDialogue.PrintHints(hints);
-                _gameDialogue.PrintGuessesCount(_guessesCount);
-                
-                _guessesCount++;
+                _gameDialogue.PrintGuessesCount(_codebreaker.Guesses.Count);
             }
 
             return hints;
         }
     }
-    
-    
 }
