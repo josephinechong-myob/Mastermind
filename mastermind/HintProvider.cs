@@ -46,7 +46,7 @@ namespace mastermind
             {
                 for (var j = 0; j < mastermindColours.Count; j++)
                 {
-                    if (i != j && !indexOfMatchedMastermindColours.Contains(j))
+                    if (IndexIsNotIdenticalAndNotAlreadyMatched(i, j, indexOfMatchedMastermindColours)) //index is not the same and already matched
                     {
                         if (mastermindColours[j] == playerColours[i] && mastermindColours[j] != playerColours[j] && mastermindColours[i] != playerColours[i])
                         {
@@ -59,6 +59,11 @@ namespace mastermind
             }
             
             return hintList;
+        }
+
+        private bool IndexIsNotIdenticalAndNotAlreadyMatched(int i, int j, List<int> indexOfMatchedMastermindColours)
+        {
+            return i != j && !indexOfMatchedMastermindColours.Contains(j);
         }
         
         
