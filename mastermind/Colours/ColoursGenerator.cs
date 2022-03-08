@@ -18,7 +18,7 @@ namespace mastermind.Colours
 
             for (var i = 0; i < numberOfColours; i++)
             {
-                var randomNumber = _randomNumberGenerator.NextRandom(colours.Length);
+                var randomNumber = _randomNumberGenerator.NextRandom(colours.Length); //enum length
                 var randomColour = colours[randomNumber];
                 chosenColours.Add(randomColour);
             }
