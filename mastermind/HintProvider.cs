@@ -46,9 +46,9 @@ namespace mastermind
             {
                 for (var j = 0; j < mastermindColours.Count; j++)
                 {
-                    if (IndexIsNotIdenticalAndNotAlreadyMatched(i, j, indexOfMatchedMastermindColours)) //index is not the same and already matched
+                    if (IndexIsNotIdenticalAndNotAlreadyMatched(i, j, indexOfMatchedMastermindColours))
                     {
-                        if (mastermindColours[j] == playerColours[i] && mastermindColours[j] != playerColours[j] && mastermindColours[i] != playerColours[i])
+                        if (SatisfiesWhiteHintConditions(i, j, playerColours, mastermindColours))
                         {
                             indexOfMatchedMastermindColours.Add(j);
                             hintList.Add(Hint.White);
@@ -65,7 +65,12 @@ namespace mastermind
         {
             return i != j && !indexOfMatchedMastermindColours.Contains(j);
         }
-        
+
+        private bool SatisfiesWhiteHintConditions(int i, int j, List<Colour> playerColours, List<Colour> mastermindColours)
+        {
+            return mastermindColours[j] == playerColours[i] && mastermindColours[j] != playerColours[j] &&
+                   mastermindColours[i] != playerColours[i];
+        }
         
         /*
         public List<Hint> ProvideHints(List<Colour> playerColours, List<Colour> mastermindColours)
