@@ -46,14 +46,11 @@ namespace mastermind
             {
                 for (var j = 0; j < mastermindColours.Count; j++)
                 {
-                    if (IndexIsNotIdenticalAndNotAlreadyMatched(i, j, indexOfMatchedMastermindColours))
+                    if (IndexIsNotIdenticalAndNotAlreadyMatched(i, j, indexOfMatchedMastermindColours) && SatisfiesWhiteHintConditions(i, j, playerColours, mastermindColours))
                     {
-                        if (SatisfiesWhiteHintConditions(i, j, playerColours, mastermindColours))
-                        {
-                            indexOfMatchedMastermindColours.Add(j);
-                            hintList.Add(Hint.White);
-                            break;
-                        }
+                        indexOfMatchedMastermindColours.Add(j);
+                        hintList.Add(Hint.White);
+                        break;
                     } 
                 }
             }
