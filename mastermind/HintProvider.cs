@@ -8,20 +8,17 @@ namespace mastermind
     public class HintProvider
     {
         private readonly IRandomNumberGenerator _generator;
-        /*private List<Colour> filteredMasterMindColours;
-        private List<Colour> filteredPlayerColours;*/
         public HintProvider(IRandomNumberGenerator generator)
         {
             _generator = generator;
-            /*filteredPlayerColours = new List<Colour>();
-            filteredPlayerColours = new List<Colour>();*/
         }
         public List<Hint> ProvideHints(List<Colour> playerColours, List<Colour> mastermindColours)
         {
-            var hintList = ProvideBlackHints(mastermindColours, playerColours);
-            hintList = ProvideWhiteHints(hintList, mastermindColours, playerColours);
+            var blackHints = ProvideBlackHints(mastermindColours, playerColours);
+            var whiteHints = ProvideWhiteHints(mastermindColours, playerColours).ToList();
+            var hints = blackHints.Concat(whiteHints).ToList();
             
-            return ProvideRandomHints(hintList);
+            return ProvideRandomHints(hints);
         }
         
         private List<Hint> ProvideBlackHints(List<Colour>mastermindColours, List<Colour>playerColours)
@@ -38,7 +35,7 @@ namespace mastermind
             return hintList;
         }
         
-        private List<Hint> ProvideWhiteHints(List<Hint> hintList, List<Colour>mastermindColours, List<Colour>playerColours)
+        private IEnumerable<Hint> ProvideWhiteHints(List<Colour>mastermindColours, List<Colour>playerColours) //yield return 
         {
             var indexOfMatchedMastermindColours = new List<int>();
             
@@ -49,13 +46,11 @@ namespace mastermind
                     if (IndexIsNotIdenticalAndNotAlreadyMatched(i, j, indexOfMatchedMastermindColours) && SatisfiesWhiteHintConditions(i, j, playerColours, mastermindColours))
                     {
                         indexOfMatchedMastermindColours.Add(j);
-                        hintList.Add(Hint.White);
+                        yield return Hint.White;
                         break;
                     } 
                 }
             }
-            
-            return hintList;
         }
 
         private bool IndexIsNotIdenticalAndNotAlreadyMatched(int i, int j, List<int> indexOfMatchedMastermindColours)
