@@ -17,8 +17,6 @@ namespace mastermind
             _codemaker = new Codemaker(randomNumberGenerator);
             _codebreaker = new Codebreaker();
         }
-        
-        // function/method Check(array/List)
 
         public void Run() //mastermind (game)
         {
@@ -42,7 +40,7 @@ namespace mastermind
                 PrintPostRoundInformation(hints);
             }
             
-            DisplayOutcome(hints);
+            DisplayGameOutcome(hints);
         }
 
         private bool IsGameIncomplete(List<Hint> hints)
@@ -62,7 +60,7 @@ namespace mastermind
             _gameDialogue.PrintGuessesCount(_codebreaker.Guesses.Count); //you guess this number of times and have this many remaining guesses
         }
 
-        private void DisplayOutcome(List<Hint> hints)
+        private void DisplayGameOutcome(List<Hint> hints)
         {
             if (PlayerHasWon(hints))
             {
