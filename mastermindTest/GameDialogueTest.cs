@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using mastermind;
 using mastermind.Colours;
+using mastermind.GameConsole;
+using mastermind.Hint;
 using Moq;
 using Xunit;
 

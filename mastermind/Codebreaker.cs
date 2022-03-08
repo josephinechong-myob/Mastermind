@@ -8,12 +8,12 @@ namespace mastermind
     {
         public List<Colour> CurrentGuess => Guesses.Last().Get(); //removed
         public List<ColoursList> Guesses; //number of guesses or guess count
-        public List<List<Hint>> Hints; //number of hints = number of guesses
+        public List<List<Hint.Hint>> Hints; //number of hints = number of guesses
         
         public Codebreaker()
         {
             Guesses = new List<ColoursList>();
-            Hints = new List<List<Hint>>();
+            Hints = new List<List<Hint.Hint>>();
         }
         
         public void UpdateGuesses(List<Colour> guess)

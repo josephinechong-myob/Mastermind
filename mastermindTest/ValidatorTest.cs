@@ -1,4 +1,5 @@
 using mastermind;
+using mastermind.Validator;
 using Moq;
 using Xunit;
 

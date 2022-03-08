@@ -1,4 +1,4 @@
-namespace mastermind
+namespace mastermind.GameConsole
 {
     public interface IConsole
     {

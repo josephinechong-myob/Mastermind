@@ -1,6 +1,6 @@
 using System;
 
-namespace mastermind
+namespace mastermind.GameConsole
 {
     public class GameConsole : IConsole
     {

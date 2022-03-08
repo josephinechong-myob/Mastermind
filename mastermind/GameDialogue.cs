@@ -2,18 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using mastermind.Colours;
+using mastermind.GameConsole;
 
 namespace mastermind
 {
     public class GameDialogue
     {
         private readonly IConsole _console;
-        private readonly Validator _validator;
+        private readonly Validator.Validator _validator;
 
         public GameDialogue(IConsole console)
         {
             _console = console;
-            _validator = new Validator();
+            _validator = new Validator.Validator();
         }
         
         public List<Colour> GetPlayersColourGuess()
@@ -26,7 +27,7 @@ namespace mastermind
             return ConvertStringToEnumForColourGuesses(playerInput);
         }
         
-        public void PrintHints(List<Hint> hints)
+        public void PrintHints(List<Hint.Hint> hints)
         {
             if (hints.Count != 0)
             {
@@ -121,7 +122,7 @@ namespace mastermind
            _console.WriteLine(errorMessage); 
         }
         
-        private string GetHints(List<Hint> hints)
+        private string GetHints(List<Hint.Hint> hints)
         {
             var hintText = "";
             

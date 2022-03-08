@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using mastermind.Colours;
+using mastermind.GameConsole;
 using mastermind.RandomNumberGenerator;
 
 namespace mastermind
@@ -32,7 +33,7 @@ namespace mastermind
 
         private void Play()
         {
-            var hints = new List<Hint>();
+            var hints = new List<Hint.Hint>();
             
             while(IsGameIncomplete(hints))
             {
@@ -43,24 +44,24 @@ namespace mastermind
             DisplayGameOutcome(hints);
         }
 
-        private bool IsGameIncomplete(List<Hint> hints)
+        private bool IsGameIncomplete(List<Hint.Hint> hints)
         {
             return _codebreaker.Guesses.Count < Constants.MaximumNumberOfColourGuesses && !PlayerHasWon(hints);
         }
 
-        private List<Hint> PlayRound()
+        private List<Hint.Hint> PlayRound()
         {
             _codebreaker.UpdateGuesses(_gameDialogue.GetPlayersColourGuess());
             return _codemaker.CheckPlayerColoursGuess(_codebreaker.CurrentGuess);
         }
 
-        private void PrintPostRoundInformation(List<Hint> hints)
+        private void PrintPostRoundInformation(List<Hint.Hint> hints)
         {
             _gameDialogue.PrintHints(hints);
             _gameDialogue.PrintGuessesCount(_codebreaker.Guesses.Count); //you guess this number of times and have this many remaining guesses
         }
 
-        private void DisplayGameOutcome(List<Hint> hints)
+        private void DisplayGameOutcome(List<Hint.Hint> hints)
         {
             if (PlayerHasWon(hints))
             {
@@ -72,9 +73,9 @@ namespace mastermind
             } 
         }
 
-        private bool PlayerHasWon(List<Hint> hints)
+        private bool PlayerHasWon(List<Hint.Hint> hints)
         {
-            return hints.Count == Constants.MaximumNumberOfHints  && hints.TrueForAll(hint => hint == Hint.Black);
+            return hints.Count == Constants.MaximumNumberOfHints  && hints.TrueForAll(hint => hint == Hint.Hint.Black);
         }
     }
 }

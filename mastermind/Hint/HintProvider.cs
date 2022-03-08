@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using mastermind.Colours;
+using mastermind.Iterators;
 using mastermind.RandomNumberGenerator;
 
-namespace mastermind
+namespace mastermind.Hint
 {
     public class HintProvider
     {
@@ -12,7 +13,7 @@ namespace mastermind
         {
             _generator = generator;
         }
-        public List<Hint> ProvideHints(List<Colour> playerColours, List<Colour> mastermindColours)
+        public List<mastermind.Hint.Hint> ProvideHints(List<Colour> playerColours, List<Colour> mastermindColours)
         {
             var blackHints = ProvideBlackHints(mastermindColours, playerColours);
             var whiteHints = ProvideWhiteHints(mastermindColours, playerColours).ToList();
@@ -21,21 +22,21 @@ namespace mastermind
             return ProvideRandomHints(hints);
         }
         
-        private List<Hint> ProvideBlackHints(List<Colour>mastermindColours, List<Colour>playerColours)
+        private List<mastermind.Hint.Hint> ProvideBlackHints(List<Colour>mastermindColours, List<Colour>playerColours)
         {
-            var hintList = new List<Hint>();
+            var hintList = new List<mastermind.Hint.Hint>();
             
             for (int i = 0; i < mastermindColours.Count; i++)
             {
                 if (playerColours[i] == mastermindColours[i])
                 {
-                    hintList.Add(Hint.Black);
+                    hintList.Add(mastermind.Hint.Hint.Black);
                 }
             }
             return hintList;
         }
         
-        private IEnumerable<Hint> ProvideWhiteHints(List<Colour>mastermindColours, List<Colour>playerColours) //yield return 
+        private IEnumerable<mastermind.Hint.Hint> ProvideWhiteHints(List<Colour>mastermindColours, List<Colour>playerColours) //yield return 
         {
             var indexOfMatchedMastermindColours = new List<int>();
 
@@ -48,7 +49,7 @@ namespace mastermind
                     if (IndexIsNotIdenticalAndNotAlreadyMatched(i, j, indexOfMatchedMastermindColours) && SatisfiesWhiteHintConditions(i, j, playerColours, mastermindColours))
                     {
                         indexOfMatchedMastermindColours.Add(j);
-                        yield return Hint.White;
+                        yield return mastermind.Hint.Hint.White;
                     } 
                 }
             }
@@ -65,10 +66,10 @@ namespace mastermind
                    mastermindColours[i] != playerColours[i];
         }
         
-        private List<Hint> ProvideRandomHints(List<Hint> hintList)
+        private List<mastermind.Hint.Hint> ProvideRandomHints(List<mastermind.Hint.Hint> hintList)
         {
             var randomHintIterator = new RandomHintIterator(hintList, _generator);
-            var randomHints = new List<Hint>();
+            var randomHints = new List<mastermind.Hint.Hint>();
             
             while (randomHintIterator.HasNext())
             {

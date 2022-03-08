@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace mastermind
+namespace mastermind.Validator
 {
     public class Validator
     {

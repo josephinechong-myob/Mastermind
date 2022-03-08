@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace mastermind.Colours
 {
-    public class ColoursList //mastermind/mastermind?? 
+    public class ColoursList
     {
         private readonly List<Colour> _coloursList;
 

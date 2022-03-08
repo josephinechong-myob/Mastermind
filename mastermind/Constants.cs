@@ -13,6 +13,5 @@ namespace mastermind
         public const string ErrorMessageExceeding60Attempts = "Error: you have had more than 60 tries!";
 
         public const string ErrorMessageInvalidYesOrNo = "Error: you have given an invalid entry. Please enter 'Y' - Yes or 'N' - No";
-
     }
 }

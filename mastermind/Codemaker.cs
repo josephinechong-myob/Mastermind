@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using mastermind.Colours;
+using mastermind.Hint;
 using mastermind.RandomNumberGenerator;
 
 namespace mastermind
@@ -17,7 +18,7 @@ namespace mastermind
             _coloursList = _coloursGenerator.GenerateNew();
         }
         
-        public List<Hint> CheckPlayerColoursGuess(List<Colour> playersColours)
+        public List<Hint.Hint> CheckPlayerColoursGuess(List<Colour> playersColours)
         {
             var hintProvider = new HintProvider(_generator);
             var hints = hintProvider.ProvideHints(playersColours, _coloursList.Get());
