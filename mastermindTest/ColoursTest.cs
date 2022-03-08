@@ -16,7 +16,7 @@ namespace mastermindTest
             //Act
             var randomNumberGenerator = new RandomNumberGenerator();
             var coloursGenerator = new ColoursGenerator(randomNumberGenerator);
-            var colours = coloursGenerator.GenerateNew(); //
+            var colours = coloursGenerator.GenerateNew();
             var actualMastermindColourListCount = colours.Get().Count;
             
             //Assert
