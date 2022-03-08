@@ -2,15 +2,15 @@ namespace mastermind.Colours
 {
     public enum Colour
     {
-        Red,
-        Blue,
-        Green,
-        Orange,
-        Purple,
-        Yellow
+        Red, //0
+        Blue, //1
+        Green, //2
+        Orange, //3
+        Purple, //4
+        Yellow //5
     }
 
-    public static class ColourExtensions
+    /*public static class ColourExtensions
     {
         public static Colour[] GetColour() //to-do 
         {
@@ -24,5 +24,5 @@ namespace mastermind.Colours
                 Colour.Yellow
             };
         }
-    }
+    }*/
 }
