@@ -5,7 +5,7 @@ namespace mastermind.RandomNumberGenerator
     {
         public int NextRandom(int max)
         {
-            Random rnd = new Random();
+            var rnd = new Random();
             return rnd.Next(max);
         }
     }

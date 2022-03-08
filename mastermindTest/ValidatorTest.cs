@@ -1,5 +1,5 @@
 using mastermind;
-using mastermind.Validator;
+using mastermind.Game;
 using Moq;
 using Xunit;
 

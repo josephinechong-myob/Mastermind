@@ -1,25 +1,23 @@
 using System.Collections.Generic;
-using mastermind.Colours;
 using mastermind.GameConsole;
 using mastermind.RandomNumberGenerator;
 
-namespace mastermind
+namespace mastermind.Game
 {
-    public class Game //mastermind
+    public class Game
     {
         private readonly GameDialogue _gameDialogue;
-        private readonly Codemaker _codemaker; //game
+        private readonly Codemaker _codemaker;
         private readonly Codebreaker _codebreaker;
         
-        //game evaluator class?
-        public Game(IConsole console, IRandomNumberGenerator randomNumberGenerator) //pass in only game??
+        public Game(IConsole console, IRandomNumberGenerator randomNumberGenerator)
         {
             _gameDialogue = new GameDialogue(console);
             _codemaker = new Codemaker(randomNumberGenerator);
             _codebreaker = new Codebreaker();
         }
 
-        public void Run() //mastermind (game)
+        public void Run()
         {
             var playerWantsToPlayAgain = true;
             

@@ -7,7 +7,7 @@ namespace mastermind
 {
     public class Codemaker
     {
-        private Colours.ColoursList _coloursList; //mastermind colours 
+        private ColoursList _coloursList;
         private readonly IRandomNumberGenerator _generator;
         private readonly ColoursGenerator _coloursGenerator;
 

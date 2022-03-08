@@ -13,34 +13,25 @@ namespace mastermind.Hint
         {
             _generator = generator;
         }
-        public List<mastermind.Hint.Hint> ProvideHints(List<Colour> playerColours, List<Colour> mastermindColours)
+        public List<Hint> ProvideHints(List<Colour> playerColours, List<Colour> mastermindColours)
         {
-            var blackHints = ProvideBlackHints(mastermindColours, playerColours);
+            var blackHints = ProvideBlackHints(mastermindColours, playerColours).ToList();
             var whiteHints = ProvideWhiteHints(mastermindColours, playerColours).ToList();
             var hints = blackHints.Concat(whiteHints).ToList();
             
             return ProvideRandomHints(hints);
         }
         
-        private List<mastermind.Hint.Hint> ProvideBlackHints(List<Colour>mastermindColours, List<Colour>playerColours)
+        private IEnumerable<Hint> ProvideBlackHints(List<Colour>mastermindColours, List<Colour>playerColours)
         {
-            var hintList = new List<mastermind.Hint.Hint>();
-            
-            for (int i = 0; i < mastermindColours.Count; i++)
-            {
-                if (playerColours[i] == mastermindColours[i])
-                {
-                    hintList.Add(mastermind.Hint.Hint.Black);
-                }
-            }
-            return hintList;
+            return mastermindColours.Where((t, i) => playerColours[i] == t).Select(t => Hint.Black).ToList();
         }
         
-        private IEnumerable<mastermind.Hint.Hint> ProvideWhiteHints(List<Colour>mastermindColours, List<Colour>playerColours) //yield return 
+        private IEnumerable<Hint> ProvideWhiteHints(List<Colour>mastermindColours, List<Colour>playerColours)
         {
             var indexOfMatchedMastermindColours = new List<int>();
 
-            for (var i = 0; i < playerColours.Count; i++) //refacore to not have a nested loop?
+            for (var i = 0; i < playerColours.Count; i++)
             {
                 var previousMatchColoursCount = indexOfMatchedMastermindColours.Count;
                 
@@ -49,7 +40,7 @@ namespace mastermind.Hint
                     if (IndexIsNotIdenticalAndNotAlreadyMatched(i, j, indexOfMatchedMastermindColours) && SatisfiesWhiteHintConditions(i, j, playerColours, mastermindColours))
                     {
                         indexOfMatchedMastermindColours.Add(j);
-                        yield return mastermind.Hint.Hint.White;
+                        yield return Hint.White;
                     } 
                 }
             }
@@ -66,10 +57,10 @@ namespace mastermind.Hint
                    mastermindColours[i] != playerColours[i];
         }
         
-        private List<mastermind.Hint.Hint> ProvideRandomHints(List<mastermind.Hint.Hint> hintList)
+        private List<Hint> ProvideRandomHints(List<Hint> hintList)
         {
             var randomHintIterator = new RandomHintIterator(hintList, _generator);
-            var randomHints = new List<mastermind.Hint.Hint>();
+            var randomHints = new List<Hint>();
             
             while (randomHintIterator.HasNext())
             {

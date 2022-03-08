@@ -1,4 +1,4 @@
-namespace mastermind
+namespace mastermind.Game
 {
     public static class Constants
     {

@@ -4,17 +4,17 @@ using System.Linq;
 using mastermind.Colours;
 using mastermind.GameConsole;
 
-namespace mastermind
+namespace mastermind.Game
 {
     public class GameDialogue
     {
         private readonly IConsole _console;
-        private readonly Validator.Validator _validator;
+        private readonly Validator _validator;
 
         public GameDialogue(IConsole console)
         {
             _console = console;
-            _validator = new Validator.Validator();
+            _validator = new Validator();
         }
         
         public List<Colour> GetPlayersColourGuess()

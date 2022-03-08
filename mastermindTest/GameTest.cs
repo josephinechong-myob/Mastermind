@@ -1,4 +1,5 @@
 using mastermind;
+using mastermind.Game;
 using mastermind.GameConsole;
 using mastermind.RandomNumberGenerator;
 using Moq;
