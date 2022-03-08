@@ -40,8 +40,6 @@ namespace mastermind
         
         private List<Hint> ProvideWhiteHints(List<Hint> hintList, List<Colour>mastermindColours, List<Colour>playerColours)
         {
-           // var numberOfMatchingColours = playerColours.Where(playerColour => mastermindColours.Any(mastermindColour => mastermindColour == playerColour)).ToList().Count;
-            var numberOfMatchingColours = 0;
             var indexOfMatchedMastermindColours = new List<int>();
             
             for (var i = 0; i < playerColours.Count; i++)
@@ -52,19 +50,14 @@ namespace mastermind
                     {
                         if (mastermindColours[j] == playerColours[i] && mastermindColours[j] != playerColours[j] && mastermindColours[i] != playerColours[i])
                         {
-                            numberOfMatchingColours = numberOfMatchingColours + 1;
                             indexOfMatchedMastermindColours.Add(j);
+                            hintList.Add(Hint.White);
                             break;
                         }
                     } 
                 }
             }
             
-            for(int i=0; i < numberOfMatchingColours; i++)
-            {
-                hintList.Add(Hint.White);
-            }
-
             return hintList;
         }
         
