@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using mastermind.Abstract;
 using mastermind.Colours;
 using mastermind.Hint;
+using mastermind.RandomNumberGenerator;
 
 namespace mastermind
 {
@@ -32,7 +32,7 @@ namespace mastermind
 
         public void ResetColours()
         {
-            _coloursList = new ColoursList(new List<Colour>());
+            _coloursList = new Colours.ColoursList(new List<Colour>());
             _coloursList = _coloursGenerator.GenerateNew();
         }
     }

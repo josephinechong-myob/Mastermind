@@ -1,5 +1,6 @@
 using mastermind;
 using mastermind.Colours;
+using mastermind.RandomNumberGenerator;
 using Xunit;
 
 namespace mastermindTest

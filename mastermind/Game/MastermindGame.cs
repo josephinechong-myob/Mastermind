@@ -1,15 +1,16 @@
 using System.Collections.Generic;
-using mastermind.Abstract;
+using mastermind.GameConsole;
+using mastermind.RandomNumberGenerator;
 
 namespace mastermind.Game
 {
-    public class Game
+    public class MastermindGame
     {
         private readonly GameDialogue _gameDialogue;
         private readonly Codemaker _codemaker;
         private readonly Codebreaker _codebreaker;
         
-        public Game(IGameConsole gameConsole, IRandomNumberGenerator randomNumberGenerator)
+        public MastermindGame(IGameConsole gameConsole, IRandomNumberGenerator randomNumberGenerator)
         {
             _gameDialogue = new GameDialogue(gameConsole);
             _codemaker = new Codemaker(randomNumberGenerator);

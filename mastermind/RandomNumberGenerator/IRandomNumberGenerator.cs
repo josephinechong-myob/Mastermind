@@ -1,4 +1,4 @@
-namespace mastermind.Abstract
+namespace mastermind.RandomNumberGenerator
 {
     public interface IRandomNumberGenerator
     {

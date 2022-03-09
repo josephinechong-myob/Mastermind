@@ -1,7 +1,5 @@
 using System;
-using mastermind.Abstract;
-
-namespace mastermind
+namespace mastermind.RandomNumberGenerator
 {
     public class RandomNumberGenerator : IRandomNumberGenerator
     {

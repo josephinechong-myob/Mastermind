@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using mastermind.Abstract;
+using mastermind.RandomNumberGenerator;
 
-namespace mastermind.Hint
+namespace mastermind.Iterators
 {
-    public class RandomHintIterator : IIterator<Hint>
+    public class RandomHintIterator : IIterator<Hint.Hint>
     {
         private readonly IRandomNumberGenerator _generator;
-        private readonly List<mastermind.Hint.Hint> _hints;
+        private readonly List<Hint.Hint> _hints;
 
-        public RandomHintIterator(List<mastermind.Hint.Hint> hints, IRandomNumberGenerator generator)
+        public RandomHintIterator(List<Hint.Hint> hints, IRandomNumberGenerator generator)
         {
             _generator = generator;
             _hints = hints;
@@ -19,7 +19,7 @@ namespace mastermind.Hint
             return _hints.Count != 0;
         }
 
-        public mastermind.Hint.Hint GetNext()
+        public Hint.Hint GetNext()
         {
             var randomIndex = _generator.NextRandom(_hints.Count);
             var randomHint = _hints[randomIndex];
