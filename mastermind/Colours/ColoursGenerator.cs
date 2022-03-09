@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using mastermind.RandomNumberGenerator;
+using mastermind.Abstract;
 
 namespace mastermind.Colours
 {

@@ -1,7 +1,6 @@
 using mastermind;
+using mastermind.Abstract;
 using mastermind.Game;
-using mastermind.GameConsole;
-using mastermind.RandomNumberGenerator;
 using Moq;
 using Xunit;
 
@@ -20,7 +19,7 @@ namespace mastermindTest
                 .Returns("N");
             mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
-            var game = new MastermindGame(mockConsole.Object, mockRandomNumberGenerator.Object);
+            var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
 
             //act
             game.Run();
@@ -42,7 +41,7 @@ namespace mastermindTest
                 .Returns("N");
             mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
-            var game = new MastermindGame(mockConsole.Object, mockRandomNumberGenerator.Object);
+            var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
             
             //act
             game.Run();
@@ -121,7 +120,7 @@ namespace mastermindTest
                 .Returns("N");
             mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
-            var game = new MastermindGame(mockConsole.Object, mockRandomNumberGenerator.Object);
+            var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
             var expectedGuessCount = 60;
             
             //act
@@ -145,7 +144,7 @@ namespace mastermindTest
                 .Returns("N");
             mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
-            var game = new MastermindGame(mockConsole.Object, mockRandomNumberGenerator.Object);
+            var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
 
             //act
             game.Run();
@@ -166,7 +165,7 @@ namespace mastermindTest
                 .Returns("N");
             mockRandomNumberGenerator.Setup(mastermind => mastermind.NextRandom(It.IsAny<int>()))
                 .Returns(0);
-            var game = new MastermindGame(mockConsole.Object, mockRandomNumberGenerator.Object);
+            var game = new Game(mockConsole.Object, mockRandomNumberGenerator.Object);
 
             //act
             game.Run();
