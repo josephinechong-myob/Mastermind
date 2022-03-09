@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace mastermind
+namespace mastermind.Game
 {
-    public class Validator
+    public class GameValidator
     {
         public bool IsValidColourGuess(string playerResponse)// empty string, non-letters, no comma, check that there are 3 commas (4 colours), are the colour valid colours - regex 
         {

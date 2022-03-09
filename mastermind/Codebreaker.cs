@@ -6,14 +6,12 @@ namespace mastermind
 {
     public class Codebreaker
     {
-        public List<Colour> CurrentGuess => Guesses.Last().Get(); //removed
-        public List<ColoursList> Guesses; //number of guesses or guess count
-        public List<List<Hint>> Hints; //number of hints = number of guesses
-        
+        public List<Colour> CurrentGuess => Guesses.Last().Get();
+        public readonly List<ColoursList> Guesses;
+
         public Codebreaker()
         {
             Guesses = new List<ColoursList>();
-            Hints = new List<List<Hint>>();
         }
         
         public void UpdateGuesses(List<Colour> guess)
@@ -21,18 +19,5 @@ namespace mastermind
             var colourlist = new ColoursList(guess);
             Guesses.Add(colourlist);
         }
-
-        public int GetNumberOfGuesses()
-        {
-            var numberOfGuesses = 0;
-
-            foreach (var guess in Guesses)
-            {
-                numberOfGuesses++;
-            }
-
-            return numberOfGuesses;
-        }
-        
     }
 }

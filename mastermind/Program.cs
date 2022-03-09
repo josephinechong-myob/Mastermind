@@ -1,12 +1,14 @@
-﻿namespace mastermind
+﻿using mastermind.Game;
+
+namespace mastermind
 {
-    class Program
+    internal static class Program
     {
         private static void Main()
         { 
-            var randomNumberGenerator = new RandomNumberGenerator.RandomNumberGenerator();
-            var console = new GameConsole();
-            var game = new Game(console, randomNumberGenerator);
+            var randomNumberGenerator = new RandomNumberGenerator();
+            var console = new GameGameConsole();
+            var game = new Game.Game(console, randomNumberGenerator);
             game.Run();
         }
     }

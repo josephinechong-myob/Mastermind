@@ -1,11 +1,13 @@
 using System;
-namespace mastermind.RandomNumberGenerator
+using mastermind.Abstract;
+
+namespace mastermind
 {
     public class RandomNumberGenerator : IRandomNumberGenerator
     {
         public int NextRandom(int max)
         {
-            Random rnd = new Random();
+            var rnd = new Random();
             return rnd.Next(max);
         }
     }

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using mastermind.Abstract;
 using mastermind.Colours;
-using mastermind.RandomNumberGenerator;
 
-namespace mastermind
+namespace mastermind.Hint
 {
     public class HintProvider
     {
@@ -14,32 +14,23 @@ namespace mastermind
         }
         public List<Hint> ProvideHints(List<Colour> playerColours, List<Colour> mastermindColours)
         {
-            var blackHints = ProvideBlackHints(mastermindColours, playerColours);
+            var blackHints = ProvideBlackHints(mastermindColours, playerColours).ToList();
             var whiteHints = ProvideWhiteHints(mastermindColours, playerColours).ToList();
             var hints = blackHints.Concat(whiteHints).ToList();
             
             return ProvideRandomHints(hints);
         }
         
-        private List<Hint> ProvideBlackHints(List<Colour>mastermindColours, List<Colour>playerColours)
+        private IEnumerable<Hint> ProvideBlackHints(List<Colour>mastermindColours, List<Colour>playerColours)
         {
-            var hintList = new List<Hint>();
-            
-            for (int i = 0; i < mastermindColours.Count; i++)
-            {
-                if (playerColours[i] == mastermindColours[i])
-                {
-                    hintList.Add(Hint.Black);
-                }
-            }
-            return hintList;
+            return mastermindColours.Where((t, i) => playerColours[i] == t).Select(t => Hint.Black).ToList();
         }
         
-        private IEnumerable<Hint> ProvideWhiteHints(List<Colour>mastermindColours, List<Colour>playerColours) //yield return 
+        private IEnumerable<Hint> ProvideWhiteHints(List<Colour>mastermindColours, List<Colour>playerColours)
         {
             var indexOfMatchedMastermindColours = new List<int>();
 
-            for (var i = 0; i < playerColours.Count; i++) //refacore to not have a nested loop?
+            for (var i = 0; i < playerColours.Count; i++)
             {
                 var previousMatchColoursCount = indexOfMatchedMastermindColours.Count;
                 

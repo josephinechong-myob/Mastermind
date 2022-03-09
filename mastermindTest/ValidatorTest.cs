@@ -1,4 +1,5 @@
 using mastermind;
+using mastermind.Game;
 using Moq;
 using Xunit;
 
@@ -16,7 +17,7 @@ namespace mastermindTest
         public void Guesses_Should_Only_Contain_Four_Valid_Colors(string input, bool expectedOutput)
         {
             //Arrange
-            var validator = new Validator();
+            var validator = new GameValidator();
 
             //Act
             var actualOutput = validator.IsValidColourGuess(input);
@@ -37,7 +38,7 @@ namespace mastermindTest
         public void All_Colours_Are_Capitalised(string input, bool expectedOutput)
         {
             //Arrange
-            var validator = new Validator();
+            var validator = new GameValidator();
 
             //Act
             var actualOutput = validator.IsValidColourGuess(input);
@@ -61,7 +62,7 @@ namespace mastermindTest
         public void Colours_Are_Valid(string input, bool expectedOutput)
         {
             //Arrange
-            var validator = new Validator();
+            var validator = new GameValidator();
 
             //Act
             var actualOutput = validator.IsValidColour(input);

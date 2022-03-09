@@ -1,5 +1,6 @@
+using System;
 using System.Collections.Generic;
-using mastermind.RandomNumberGenerator;
+using mastermind.Abstract;
 
 namespace mastermind.Colours
 {
@@ -11,19 +12,24 @@ namespace mastermind.Colours
             _randomNumberGenerator = randomNumberGenerator;
         }
 
-        public ColoursList GenerateNew(int numberOfColours = 4) //could it be made static (static methods can't use fields and we need to use random number generator in lin 20)
+        public ColoursList GenerateNew(int numberOfColours = 4)
         {
-            var colours = ColourExtensions.GetColour();
             var chosenColours = new List<Colour>();
 
             for (var i = 0; i < numberOfColours; i++)
             {
-                var randomNumber = _randomNumberGenerator.NextRandom(colours.Length); //enum length
-                var randomColour = colours[randomNumber];
+                var randomColour = GetRandomColour();
                 chosenColours.Add(randomColour);
             }
 
             return new ColoursList(chosenColours);
+        }
+
+        private Colour GetRandomColour()
+        {
+            var randomNumber = _randomNumberGenerator.NextRandom(Enum.GetNames(typeof(Colour)).Length);
+            var randomColour = (Colour) randomNumber;
+            return randomColour;
         }
     }
 }

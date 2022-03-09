@@ -1,19 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using mastermind.Abstract;
 using mastermind.Colours;
 
-namespace mastermind
+namespace mastermind.Game
 {
     public class GameDialogue
     {
-        private readonly IConsole _console;
-        private readonly Validator _validator;
+        private readonly IGameConsole _gameConsole;
+        private readonly GameValidator _gameValidator;
 
-        public GameDialogue(IConsole console)
+        public GameDialogue(IGameConsole gameConsole)
         {
-            _console = console;
-            _validator = new Validator();
+            _gameConsole = gameConsole;
+            _gameValidator = new GameValidator();
         }
         
         public List<Colour> GetPlayersColourGuess()
@@ -26,16 +27,16 @@ namespace mastermind
             return ConvertStringToEnumForColourGuesses(playerInput);
         }
         
-        public void PrintHints(List<Hint> hints)
+        public void PrintHints(List<Hint.Hint> hints)
         {
             if (hints.Count != 0)
             {
                 var hintText = GetHints(hints);
-                _console.WriteLine($"Hints: {hintText}"); 
+                _gameConsole.WriteLine($"Hints: {hintText}"); 
             }
             else
             {
-                _console.WriteLine("Your guess resulted in no hints");
+                _gameConsole.WriteLine("Your guess resulted in no hints");
             }
         }
 
@@ -46,22 +47,22 @@ namespace mastermind
             {
                 colourString += mastermindColours[i].ToString() + (i < mastermindColours.Count - 1 ? ", ": "");
             }
-            _console.WriteLine($"{Constants.ErrorMessageExceeding60Attempts} Sorry you have run out of guesses. The correct answer is {colourString}.");
+            _gameConsole.WriteLine($"{GameConstants.ErrorMessageExceeding60Attempts} Sorry you have run out of guesses. The correct answer is {colourString}.");
         }
 
         public void PrintGuessesCount(int guessesCount)
         {
-            _console.WriteLine($"Guesses Count is {guessesCount}");
+            _gameConsole.WriteLine($"Guesses Count is {guessesCount}");
         }
 
         public bool DoesPlayerWantToReplay()
         {
-            _console.WriteLine("Do you want to replay mastermind? Y - Yes, N - No");
-            var response = _console.ReadLine();
-            while (!_validator.ResponseIsYOrN(response))
+            _gameConsole.WriteLine("Do you want to replay mastermind? Y - Yes, N - No");
+            var response = _gameConsole.ReadLine();
+            while (!_gameValidator.ResponseIsYOrN(response))
             {
-                PrintErrorMessage(Constants.ErrorMessageInvalidYesOrNo);
-                response = _console.ReadLine();
+                PrintErrorMessage(GameConstants.ErrorMessageInvalidYesOrNo);
+                response = _gameConsole.ReadLine();
             }
             return response == "Y";
         }
@@ -81,9 +82,9 @@ namespace mastermind
 
         private string CheckColourListLength(string playerInput)
         {
-            while (_validator.ThereAreNotFourEntries(playerInput))
+            while (_gameValidator.ThereAreNotFourEntries(playerInput))
             {
-                PrintErrorMessage(Constants.ErrorMessageInvalidGuessLength);
+                PrintErrorMessage(GameConstants.ErrorMessageInvalidGuessLength);
                 playerInput = GetPlayerColourInput();
             }
 
@@ -92,9 +93,9 @@ namespace mastermind
 
         private string CheckValidColour(string playerInput)
         {
-            while (_validator.AnyColourIsInvalidInInput(playerInput))
+            while (_gameValidator.AnyColourIsInvalidInInput(playerInput))
             {
-                PrintErrorMessage(Constants.ErrorMessageInvalidColour);
+                PrintErrorMessage(GameConstants.ErrorMessageInvalidColour);
                 playerInput = GetPlayerColourInput();
             }
 
@@ -104,24 +105,24 @@ namespace mastermind
         private string GetPlayerColourInput()
         {
             PrintPlayerInstructions();
-            return _console.ReadLine().ToUpper();
+            return _gameConsole.ReadLine().ToUpper();
         }
 
         private void PrintPlayerInstructions()
         {
-            _console.WriteLine("Please enter your guess of four colours for mastermind separated by comma (i.e. Red, Orange, Yellow, Orange)");
+            _gameConsole.WriteLine("Please enter your guess of four colours for mastermind separated by comma (i.e. Red, Orange, Yellow, Orange)");
         }
 
         public void PrintAfterPlayerHasWon()
         {
-            _console.WriteLine("WON!");
+            _gameConsole.WriteLine("WON!");
         }
         private void PrintErrorMessage(string errorMessage)
         {
-           _console.WriteLine(errorMessage); 
+           _gameConsole.WriteLine(errorMessage); 
         }
         
-        private string GetHints(List<Hint> hints)
+        private string GetHints(List<Hint.Hint> hints)
         {
             var hintText = "";
             
