@@ -2,7 +2,7 @@ using System;
 
 namespace mastermind.GameConsole
 {
-    public class GameConsole : IConsole
+    public class GameGameConsole : IGameConsole
     {
         public void WriteLine(string writeLine)
         {

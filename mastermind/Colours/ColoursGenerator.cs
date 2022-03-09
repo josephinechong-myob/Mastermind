@@ -18,12 +18,18 @@ namespace mastermind.Colours
 
             for (var i = 0; i < numberOfColours; i++)
             {
-                var randomNumber = _randomNumberGenerator.NextRandom(Enum.GetNames(typeof(Colour)).Length);
-                var randomColour = (Colour)randomNumber;
+                var randomColour = GetRandomColour();
                 chosenColours.Add(randomColour);
             }
 
             return new ColoursList(chosenColours);
+        }
+
+        private Colour GetRandomColour()
+        {
+            var randomNumber = _randomNumberGenerator.NextRandom(Enum.GetNames(typeof(Colour)).Length);
+            var randomColour = (Colour) randomNumber;
+            return randomColour;
         }
     }
 }

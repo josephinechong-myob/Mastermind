@@ -4,15 +4,15 @@ using mastermind.RandomNumberGenerator;
 
 namespace mastermind.Game
 {
-    public class Game
+    public class MastermindGame
     {
         private readonly GameDialogue _gameDialogue;
         private readonly Codemaker _codemaker;
         private readonly Codebreaker _codebreaker;
         
-        public Game(IConsole console, IRandomNumberGenerator randomNumberGenerator)
+        public MastermindGame(IGameConsole gameConsole, IRandomNumberGenerator randomNumberGenerator)
         {
-            _gameDialogue = new GameDialogue(console);
+            _gameDialogue = new GameDialogue(gameConsole);
             _codemaker = new Codemaker(randomNumberGenerator);
             _codebreaker = new Codebreaker();
         }
@@ -44,7 +44,7 @@ namespace mastermind.Game
 
         private bool IsGameIncomplete(List<Hint.Hint> hints)
         {
-            return _codebreaker.Guesses.Count < Constants.MaximumNumberOfColourGuesses && !PlayerHasWon(hints);
+            return _codebreaker.Guesses.Count < GameConstants.MaximumNumberOfColourGuesses && !PlayerHasWon(hints);
         }
 
         private List<Hint.Hint> PlayRound()
@@ -73,7 +73,7 @@ namespace mastermind.Game
 
         private bool PlayerHasWon(List<Hint.Hint> hints)
         {
-            return hints.Count == Constants.MaximumNumberOfHints  && hints.TrueForAll(hint => hint == Hint.Hint.Black);
+            return hints.Count == GameConstants.MaximumNumberOfHints  && hints.TrueForAll(hint => hint == Hint.Hint.Black);
         }
     }
 }

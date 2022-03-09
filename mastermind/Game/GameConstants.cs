@@ -1,6 +1,6 @@
 namespace mastermind.Game
 {
-    public static class Constants
+    public static class GameConstants
     {
         public const int MaximumNumberOfHints = 4;
         
