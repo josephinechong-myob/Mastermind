@@ -1,4 +1,3 @@
-using mastermind;
 using mastermind.Abstract;
 using mastermind.Game;
 using Moq;

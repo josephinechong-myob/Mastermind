@@ -87,8 +87,7 @@ namespace mastermindTest
 
             //act
             var actualColours = gameDialogue.GetPlayersColourGuess();
-            //convert enum to a list dynamically 
-            
+
             //assert
             Assert.Equal(expectedGuessLength, actualColours.Count);
             mockConsole.Verify(expression => expression.WriteLine("Error: you have given an invalid colour!"),Times.Once);
