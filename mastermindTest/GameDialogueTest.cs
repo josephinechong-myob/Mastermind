@@ -84,8 +84,7 @@ namespace mastermindTest
 
             //act
             var actualColours = gameDialogue.GetPlayersColourGuess();
-            //convert enum to a list dynamically 
-            
+
             //assert
             Assert.Equal(expectedGuessLength, actualColours.Count);
             mockConsole.Verify(expression => expression.WriteLine("Error: you have given an invalid colour!"),Times.Once);
@@ -97,14 +96,13 @@ namespace mastermindTest
         }
         
         [Fact]
-        private void Should_Return_Colour_Emun_List_Type()
+        private void Should_Return_Colour_Enum_List_Type()
         {
             //arrange
             var mockConsole = new Mock<IConsole>();
             mockConsole.Setup(guess => guess.ReadLine())
                 .Returns("Red, Red, Blue, Yellow");
             var gameDialogue = new GameDialogue(mockConsole.Object);
-            var expectedGuessLength = 4;
 
             //act
             var actualColours = gameDialogue.GetPlayersColourGuess();
