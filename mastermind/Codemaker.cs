@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using mastermind.Abstract;
 using mastermind.Colours;
 using mastermind.Hint;
-using mastermind.RandomNumberGenerator;
 
 namespace mastermind
 {

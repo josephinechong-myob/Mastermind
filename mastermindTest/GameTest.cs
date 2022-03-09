@@ -1,7 +1,6 @@
 using mastermind;
+using mastermind.Abstract;
 using mastermind.Game;
-using mastermind.GameConsole;
-using mastermind.RandomNumberGenerator;
 using Moq;
 using Xunit;
 

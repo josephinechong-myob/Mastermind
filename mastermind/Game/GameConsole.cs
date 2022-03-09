@@ -1,6 +1,7 @@
 using System;
+using mastermind.Abstract;
 
-namespace mastermind.GameConsole
+namespace mastermind.Game
 {
     public class GameGameConsole : IGameConsole
     {

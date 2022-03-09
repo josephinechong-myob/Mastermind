@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using mastermind.GameConsole;
-using mastermind.RandomNumberGenerator;
+using mastermind.Abstract;
 
 namespace mastermind.Game
 {

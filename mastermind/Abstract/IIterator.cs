@@ -1,4 +1,4 @@
-namespace mastermind.Iterators
+namespace mastermind.Abstract
 {
     public interface IIterator<T>
     {

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using mastermind.Abstract;
 using mastermind.Colours;
-using mastermind.GameConsole;
 
 namespace mastermind.Game
 {
