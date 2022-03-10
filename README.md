@@ -11,7 +11,7 @@ You need to be able to read the code on an IDE that can compile C# (i.e. Rider).
 
 ## Coding principles used:
 - TDD (Test driven development)
-- Good testing code coverage
+- Good testing code coverage 96%
 - Test doubles & Mocks & Stubs
 - Interfaces
 - Inline testing & Facts (Unit tests)
