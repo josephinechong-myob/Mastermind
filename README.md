@@ -19,3 +19,7 @@ You need to be able to read the code on an IDE that can compile C# (i.e. Rider).
 - Single responsibility principle (SRP) to write functions
 - DRY principle (do not repeat yourself)
 - Readability for functions and their names
+
+## Game design
+
+![UML diagram](https://github.com/josephinechong-myob/Mastermind/blob/main/Mastermind.png)
